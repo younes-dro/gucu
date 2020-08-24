@@ -254,7 +254,37 @@ class Gucu_Custom_Queries{
             
         }
         
+        add_filter( 'theme_page_templates' , array( $this , 'load_custom_template') );
+        add_filter('page_template', array($this ,  'catch_bible_template' ) );
+        add_filter('page_template', array($this ,  'catch_commentary_template' ) );        
     }
+    public function load_custom_template( $templates ){
+        
+        $templates['bible.php'] = 'Biblle Page Template';
+        $templates['commentary.php'] = 'Commentary Page Template';
+        
+        return $templates;
+    }
+    public function catch_bible_template( $template ){
+        
+        if( is_page_template('bible.php') ){
+            
+            $template = $this->plugin_path() . '/template/bible.php';
+        }
+        // Return
+        return $template;        
+    }
+    
+    public function catch_commentary_template( $template ){
+        
+        if( is_page_template('commentary.php') ){
+            
+            $template = $this->plugin_path() . '/template/commentary.php';
+        }
+        // Return
+        return $template;        
+    }    
+    
     /*-----------------------------------------------------------------------------------*/
     /*  Helper Functions                                                                 */
     /*-----------------------------------------------------------------------------------*/
