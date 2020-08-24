@@ -236,7 +236,7 @@ class Gucu_Custom_Queries{
         
         if( ! is_admin()  ){  
             add_action('pre_get_posts' , function( $query ){
-                if ( $query->is_main_query()  && is_category('213') ) {
+                if ( $query->is_main_query()  && ( is_category('213') || is_category('216') ) ) {
 
                     $today = getdate();
 
