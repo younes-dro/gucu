@@ -9,6 +9,11 @@ body.page-template-commentary article.page{
     padding-bottom: 10px;
 }
 
+body.page-template-bible article.page ul,
+body.page-template-commentary article.page ul{
+    
+    list-style-type: none;
+}
 
 span.ionicons.ion-ios-add-circle-outline,
 span.ion-ios-remove-circle-outline{
@@ -26,9 +31,27 @@ ul.gucu-sub-cats{
     margin-left: 12px;
 }
 ul.gucu-sub-child-cats{
+    
     display: none;
     margin-left: 12px;
 }
 ul.gucu-sub-child-cats.open{
     display: block;
+}
+ul.gucu-sub-child-cats li.gucu-thumb{
+    background-repeat: no-repeat;
+    /* max-width: 150px; */
+    /* height: auto; */
+    /*padding-left: 150px;*/
+    border: 1px solid #ccc;
+    /* border-radius: 6px; */
+    margin: 4px 4px;
+    padding: 0px 0px 0px 109px;
+    height: 100px;
+    max-height: 100px;
+    background-size: contain;    
+}
+ul.gucu-sub-child-cats li.gucu-thumb p{
+    font-size: 1rem;
+    text-align: left;    
 }

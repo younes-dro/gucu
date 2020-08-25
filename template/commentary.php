@@ -47,7 +47,8 @@
 			 * @since 1.1.0
 			 */
 			do_action( 'genesis_loop' );
-                        
+                        // local 225
+                        //gucu 536
                         $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(536);
                         echo $gucu_custom_cat_menu->get_html();                        
 

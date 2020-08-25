@@ -96,9 +96,14 @@ class Gucu_Custom_Categories_Menu {
                                 );
                 
                 foreach ($posts as $post) {
+//                    echo '<pre>';
 //                    var_dump($post);
-                    $sub .= '<li>';
+//                    echo '</pre>';
+                    $post_thumbnail_url = get_the_post_thumbnail_url( $post->ID , array( 'post-thumbnail' ) );
+                    $background_url = ( $post_thumbnail_url ) ? 'style="background-image:url(' .  $post_thumbnail_url .')"' : '';
+                    $sub .= '<li class="gucu-thumb" '.$background_url.'>';
                     $sub .= '<a href="'.get_permalink( $post->ID ).'">'.$post->post_title. '</a>';
+                    $sub .=   substr($post->post_content, 0, 76 ).'... ';
                     $sub .='</li>';
                 }
                 $sub .='</ul>';
