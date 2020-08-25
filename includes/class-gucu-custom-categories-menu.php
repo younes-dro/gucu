@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * Display Custom Categories menu.
+ * 
+ * @author    Younes DRO
+ * @copyright Copyright (c) 2020, Younes DRO
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
+ */
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+/**
+ * Display Custom Categories menu.
+ * 
+ * @class Gucu_Custom_Categories_Menu
+ * @author Younes DRO <younesdro@gmail.com>
+ * @version 1.0.0
+ * @since 1.0.0
+ */
+class Gucu_Custom_Categories_Menu {
+
+    /** Parent Category ID * */
+    private $parent_cat;
+
+    /** Html * */
+    public $html = '';
+
+    public function __construct($parent_cat) {
+
+        $this->parent_cat = $parent_cat;
+    }
+
+    public function get_html() {
+
+        if ($this->parent_category()) {
+
+            $this->html = '<ul>';
+            $this->html .= '<li>';
+
+            $parent = $this->parent_category();
+            $this->html .='<a href="#">' . $parent->name . '</a>' . ' (' . $parent->count . ')';
+
+            $args = array('parent' => $this->parent_cat, 'hide_empty' => false);
+            $categories = get_categories($args);
+            foreach ($categories as $category) {
+                $this->html .= '<ul>';
+                $this->html .= '<li>';
+                $this->html .= '<a href="">' . $category->name . '</a>' . ' (' . $category->count . ')';
+                // Child Cat
+                if ($this->category_has_children( $category->term_id ) ) {
+                    $this->html .= $this->get_sub_category( $category->term_id );
+                }
+                $this->html .= '</li>';
+                $this->html .= '</ul>';
+            }
+
+
+            $this->html .= '</li>';
+            $this->html .= '</ul>';
+        } else {
+            $this->html = 'This category does not exist !';
+        }
+
+        return $this->html;
+    }
+
+    private function parent_category() {
+
+        $parent_cat = get_category($this->parent_cat);
+
+        return $parent_cat;
+    }
+
+    private function get_sub_category($id) {
+        $sub ='';
+        $args = array('parent' => $id, 'hide_empty' => false);
+        $categories = get_categories($args);
+        foreach ($categories as $category) {
+            $sub .= '<ul>';
+            $sub .= '<li>';
+            $sub .= '<a href="">' . $category->name . '</a>' . ' (' . $category->count . ')';
+            $sub .= '</li>';
+            $sub .= '</ul>';
+        }
+        
+        return $sub;
+    }
+
+    private function category_has_children($term_id = 0, $taxonomy = 'category') {
+
+        $children = get_categories(array(
+            'child_of' => $term_id,
+            'taxonomy' => $taxonomy,
+            'hide_empty' => false,
+            'fields' => 'ids'));
+
+        return ( $children );
+    }
+
+    private function get_posts($category) {
+        
+    }
+
+}
