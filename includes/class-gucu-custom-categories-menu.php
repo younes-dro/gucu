@@ -36,11 +36,12 @@ class Gucu_Custom_Categories_Menu {
 
         if ($this->parent_category()) {
 
-            $this->html = '<article style="margin-top:14px;" class="gucu-custom-bibe page type-page status-publish has-post-thumbnail entry"><ul class="gucu-cats">';
+            $this->html = '<article style="margin-top:14px;" class="gucu-custom-bibe page type-page status-publish has-post-thumbnail entry">';
+            $this->html .='<ul class="gucu-cats">';
             $this->html .= '<li>';
 
             $parent = $this->parent_category();
-            $this->html .='<a href="#">' . $parent->name . '</a>' . ' (' . $parent->count . ')';
+            $this->html .='<a class="parent-cat" href="#">' . $parent->name . '</a>' . ' (' . $parent->count . ')';
 
             $args = array('parent' => $this->parent_cat, 'hide_empty' => false);
             $categories = get_categories($args);
@@ -49,7 +50,7 @@ class Gucu_Custom_Categories_Menu {
                 $open_icon = ($has_children) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
                 $this->html .= '<ul class="gucu-sub-cats">';
                 $this->html .= '<li>';
-                $this->html .= $open_icon . '<a href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
+                $this->html .= $open_icon . '<a class="parent-cat" href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
                 // Child Cat
                 if ( $has_children ) {
                     $this->html .= $this->get_sub_category( $category->term_id );
@@ -83,7 +84,7 @@ class Gucu_Custom_Categories_Menu {
             $open_icon = ($has_posts) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
             $sub .= '<ul class="gucu-sub-child-cats">';
             $sub .= '<li>';
-            $sub .= $open_icon . '<a href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
+            $sub .= $open_icon . '<a  class="parent-cat" href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
             if( $has_posts ){
                 $sub .='<ul class="gucu-sub-child-cats">';
                 $posts = get_posts( array ( 'category' => $category->term_id , 'post_status' =>'publish'));

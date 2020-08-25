@@ -48,7 +48,7 @@
 			 */
 			do_action( 'genesis_loop' );
                         
-                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(219);
+                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(536);
                         echo $gucu_custom_cat_menu->get_html();                        
 
 			/**

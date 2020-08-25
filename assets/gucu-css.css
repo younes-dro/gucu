@@ -1,6 +1,7 @@
 
 
-body.page-template-bible article.page{
+body.page-template-bible article.page ,
+body.page-template-commentary article.page{
     margin-top: 14px;
     /* border-top: 0; */
     padding-left: 15px;
