@@ -36,7 +36,7 @@ class Gucu_Custom_Categories_Menu {
 
         if ($this->parent_category()) {
 
-            $this->html = '<ul>';
+            $this->html = '<ul class="gucu-cats">';
             $this->html .= '<li>';
 
             $parent = $this->parent_category();
@@ -45,18 +45,18 @@ class Gucu_Custom_Categories_Menu {
             $args = array('parent' => $this->parent_cat, 'hide_empty' => false);
             $categories = get_categories($args);
             foreach ($categories as $category) {
-                $this->html .= '<ul>';
+                $has_children = ($this->category_has_children( $category->term_id )) ? true : false;
+                $open_icon = ($has_children) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
+                $this->html .= '<ul class="gucu-sub-cats">';
                 $this->html .= '<li>';
-                $this->html .= '<a href="">' . $category->name . '</a>' . ' (' . $category->count . ')';
+                $this->html .= $open_icon . '<a href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
                 // Child Cat
-                if ($this->category_has_children( $category->term_id ) ) {
+                if ( $has_children ) {
                     $this->html .= $this->get_sub_category( $category->term_id );
                 }
                 $this->html .= '</li>';
                 $this->html .= '</ul>';
             }
-
-
             $this->html .= '</li>';
             $this->html .= '</ul>';
         } else {
@@ -75,12 +75,26 @@ class Gucu_Custom_Categories_Menu {
 
     private function get_sub_category($id) {
         $sub ='';
+        
         $args = array('parent' => $id, 'hide_empty' => false);
         $categories = get_categories($args);
         foreach ($categories as $category) {
-            $sub .= '<ul>';
+            $has_posts = ($category->count)? true : false;
+            $open_icon = ($has_posts) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
+            $sub .= '<ul class="gucu-sub-child-cats">';
             $sub .= '<li>';
-            $sub .= '<a href="">' . $category->name . '</a>' . ' (' . $category->count . ')';
+            $sub .= $open_icon . '<a href="">' . $category->name . '</a>' . ' (' . $category->count . ')';
+            if( $has_posts ){
+                $sub .='<ul class="gucu-sub-child-cats">';
+                $posts = get_posts( array ( 'category' => $category->term_id));
+                
+                foreach ($posts as $post) {
+                    $sub .= '<li>';
+                    $sub .= '<a href="#">'.$post->post_title. '</a>';
+                    $sub .='</li>';
+                }
+                $sub .='</ul>';
+            }
             $sub .= '</li>';
             $sub .= '</ul>';
         }

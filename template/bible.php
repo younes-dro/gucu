@@ -20,35 +20,36 @@ get_header();
         endwhile; // End of the loop.
 
         $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(218);
-//        echo '<pre>';
         echo $gucu_custom_cat_menu->get_html();
-//        echo '</pre>';
-//            $gucu_custom_cat_menu::test();
-//            $bible = get_category(218, ARRAY_A);
-//
-//
-//
-//
-//
-//            $args = array('parent' => 218 , 'hide_empty' => false);
-//
-//            $categories = get_categories($args);
-//
-//            foreach ($categories as $category) {
-//                
-//                if ( category_has_children( $category->term_id ) ){
-//                 echo '<i>has child</i>';   
-//                }else{
-//                    echo '<i>has no child</i>';   
-//                }
-//
-//                echo '<p>Category: <a href="' . get_category_link($category->term_id) . '" title="' . sprintf(__("View all posts in %s"), $category->name) . '" ' . '>' . $category->name . '</a> </p> ';
-//                echo '<p> Description:' . $category->description . '</p>';
-//                echo '<p> Post Count: ' . $category->count . '</p>';
-//            }
         ?>
 
     </main>
 </div><!-- ./content-sidebar-wrap -->
 <?php
 get_footer();
+?>
+
+<style>
+    span.ionicons.ion-ios-add-circle-outline,
+    span.ion-ios-remove-circle-outline{
+        font-size: 12px;
+        transform: scale(2);
+        display: inline-block;
+        margin-right: 11px;
+        cursor: pointer;        
+    }
+    ul.gucu-cats{
+        
+    }
+    ul.gucu-sub-cats{
+        /*display: none;*/
+        margin-left: 12px;
+    }
+    ul.gucu-sub-child-cats{
+        display: none;
+        margin-left: 12px;
+    }
+    ul.gucu-sub-child-cats.open{
+        display: block;
+    }
+</style>

@@ -256,7 +256,9 @@ class Gucu_Custom_Queries{
         
         add_filter( 'theme_page_templates' , array( $this , 'load_custom_template') );
         add_filter('page_template', array($this ,  'catch_bible_template' ) );
-        add_filter('page_template', array($this ,  'catch_commentary_template' ) );        
+        add_filter('page_template', array($this ,  'catch_commentary_template' ) );
+        add_action( 'wp_enqueue_scripts', array( $this , 'gucu_enqueue') );
+        
     }
     public function load_custom_template( $templates ){
         
@@ -283,7 +285,15 @@ class Gucu_Custom_Queries{
         }
         // Return
         return $template;        
-    }    
+    }  
+    
+    public function gucu_enqueue(){
+//        if(is_page_template( 'template/bible.php' ))
+//        {
+            wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/asset/gucu-js.js' , array('jquery'));
+            
+//        }        
+    }
     
     /*-----------------------------------------------------------------------------------*/
     /*  Helper Functions                                                                 */
