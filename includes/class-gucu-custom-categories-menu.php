@@ -87,7 +87,13 @@ class Gucu_Custom_Categories_Menu {
             $sub .= $open_icon . '<a  class="parent-cat" href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
             if( $has_posts ){
                 $sub .='<ul class="gucu-sub-child-cats">';
-                $posts = get_posts( array ( 'category' => $category->term_id , 'post_status' =>'publish'));
+                $posts = get_posts( array ( 
+                                            'category' => $category->term_id , 
+                                            'post_status' =>'publish', 
+                                            'orderby' => 'publish_date',
+                                            'order' => 'ASC'
+                                        ) 
+                                );
                 
                 foreach ($posts as $post) {
 //                    var_dump($post);
