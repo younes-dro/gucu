@@ -288,11 +288,10 @@ class Gucu_Custom_Queries{
     }  
     
     public function gucu_enqueue(){
-//        if(is_page_template( 'template/bible.php' ))
-//        {
-            wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/asset/gucu-js.js' , array('jquery'));
-            
-//        }        
+        if(is_page_template( 'bible.php' )){
+            wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/assets/gucu-js.js' , array('jquery'));
+            wp_enqueue_style( 'style-name', $this->plugin_url() . '/assets/gucu-css.css' );
+        }        
     }
     
     /*-----------------------------------------------------------------------------------*/

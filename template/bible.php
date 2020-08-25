@@ -3,53 +3,89 @@
  * Template Name: Bible Template
  *
  */
-get_header();
-?>
-<div class="content-sidebar-wrap">
-    <main class="main" id="genesis-content">
-        <?php
-        while (have_posts()) :
-            the_post();
 
-            the_title('<h1 class="entry-header">', '</h1>');
+	get_header();
 
-            echo '<div class="entry-content">';
-            the_content();
-            echo '</div>';
+	/**
+	 * Fires after the header, before the content sidebar wrap.
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'genesis_before_content_sidebar_wrap' );
 
-        endwhile; // End of the loop.
+	genesis_markup(
+		[
+			'open'    => '<div %s>',
+			'context' => 'content-sidebar-wrap',
+		]
+	);
 
-        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(218);
-        echo $gucu_custom_cat_menu->get_html();
-        ?>
+		/**
+		 * Fires before the content, after the content sidebar wrap opening markup.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'genesis_before_content' );
 
-    </main>
-</div><!-- ./content-sidebar-wrap -->
-<?php
+		genesis_markup(
+			[
+				'open'    => '<main %s>',
+				'context' => 'content',
+			]
+		);
+
+			/**
+			 * Fires before the loop hook, after the main content opening markup.
+			 *
+			 * @since 1.0.0
+			 */
+			do_action( 'genesis_before_loop' );
+
+			/**
+			 * Fires to display the loop contents.
+			 *
+			 * @since 1.1.0
+			 */
+			do_action( 'genesis_loop' );
+                        
+                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(218);
+                        echo $gucu_custom_cat_menu->get_html();                        
+
+			/**
+			 * Fires after the loop hook, before the main content closing markup.
+			 *
+			 * @since 1.0.0
+			 */
+			do_action( 'genesis_after_loop' );
+
+
+		genesis_markup(
+			[
+				'close'   => '</main>', // End .content.
+				'context' => 'content',
+			]
+		);
+
+		/**
+		 * Fires after the content, before the main content sidebar wrap closing markup.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'genesis_after_content' );
+
+	genesis_markup(
+		[
+			'close'   => '</div>',
+			'context' => 'content-sidebar-wrap',
+		]
+	);
+
+	/**
+	 * Fires before the footer, after the content sidebar wrap.
+	 *
+	 * @since 1.0.0
+	 */
+	do_action( 'genesis_after_content_sidebar_wrap' );
+
+
 get_footer();
-?>
-
-<style>
-    span.ionicons.ion-ios-add-circle-outline,
-    span.ion-ios-remove-circle-outline{
-        font-size: 12px;
-        transform: scale(2);
-        display: inline-block;
-        margin-right: 11px;
-        cursor: pointer;        
-    }
-    ul.gucu-cats{
-        
-    }
-    ul.gucu-sub-cats{
-        /*display: none;*/
-        margin-left: 12px;
-    }
-    ul.gucu-sub-child-cats{
-        display: none;
-        margin-left: 12px;
-    }
-    ul.gucu-sub-child-cats.open{
-        display: block;
-    }
-</style>

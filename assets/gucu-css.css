@@ -1,0 +1,33 @@
+
+
+body.page-template-bible article.page{
+    margin-top: 14px;
+    /* border-top: 0; */
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+span.ionicons.ion-ios-add-circle-outline,
+span.ion-ios-remove-circle-outline{
+    font-size: 12px;
+    transform: scale(2);
+    display: inline-block;
+    margin-right: 11px;
+    cursor: pointer;        
+}
+ul.gucu-cats{
+
+}
+ul.gucu-sub-cats{
+    /*display: none;*/
+    margin-left: 12px;
+}
+ul.gucu-sub-child-cats{
+    display: none;
+    margin-left: 12px;
+}
+ul.gucu-sub-child-cats.open{
+    display: block;
+}

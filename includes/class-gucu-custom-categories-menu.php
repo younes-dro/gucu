@@ -36,7 +36,7 @@ class Gucu_Custom_Categories_Menu {
 
         if ($this->parent_category()) {
 
-            $this->html = '<ul class="gucu-cats">';
+            $this->html = '<article style="margin-top:14px;" class="gucu-custom-bibe page type-page status-publish has-post-thumbnail entry"><ul class="gucu-cats">';
             $this->html .= '<li>';
 
             $parent = $this->parent_category();
@@ -58,7 +58,7 @@ class Gucu_Custom_Categories_Menu {
                 $this->html .= '</ul>';
             }
             $this->html .= '</li>';
-            $this->html .= '</ul>';
+            $this->html .= '</ul></article>';
         } else {
             $this->html = 'This category does not exist !';
         }
