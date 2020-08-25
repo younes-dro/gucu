@@ -83,14 +83,15 @@ class Gucu_Custom_Categories_Menu {
             $open_icon = ($has_posts) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
             $sub .= '<ul class="gucu-sub-child-cats">';
             $sub .= '<li>';
-            $sub .= $open_icon . '<a href="">' . $category->name . '</a>' . ' (' . $category->count . ')';
+            $sub .= $open_icon . '<a href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
             if( $has_posts ){
                 $sub .='<ul class="gucu-sub-child-cats">';
-                $posts = get_posts( array ( 'category' => $category->term_id));
+                $posts = get_posts( array ( 'category' => $category->term_id , 'post_status' =>'publish'));
                 
                 foreach ($posts as $post) {
+//                    var_dump($post);
                     $sub .= '<li>';
-                    $sub .= '<a href="#">'.$post->post_title. '</a>';
+                    $sub .= '<a href="'.get_permalink( $post->ID ).'">'.$post->post_title. '</a>';
                     $sub .='</li>';
                 }
                 $sub .='</ul>';
