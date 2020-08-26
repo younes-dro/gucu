@@ -61,6 +61,11 @@ ul.gucu-sub-child-cats li.gucu-thumb p{
 a.gucu-single-post{
     font-size: 14px;
 }
+span.readmore{
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px dotted;    
+}
 @media screen and ( min-width:802px){
     ul.gucu-sub-child-cats li.gucu-thumb{
         height: 180px;
