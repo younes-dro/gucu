@@ -11,7 +11,7 @@ body.page-template-commentary article.page{
 
 body.page-template-bible article.page ul,
 body.page-template-commentary article.page ul{
-    
+
     list-style-type: none;
 }
 
@@ -31,7 +31,7 @@ ul.gucu-sub-cats{
     margin-left: 12px;
 }
 ul.gucu-sub-child-cats{
-    
+
     display: none;
     margin-left: 12px;
 }
@@ -40,18 +40,39 @@ ul.gucu-sub-child-cats.open{
 }
 ul.gucu-sub-child-cats li.gucu-thumb{
     background-repeat: no-repeat;
-    /* max-width: 150px; */
-    /* height: auto; */
-    /*padding-left: 150px;*/
     border: 1px solid #ccc;
-    /* border-radius: 6px; */
     margin: 4px 4px;
-    padding: 0px 0px 0px 109px;
-    height: 100px;
-    max-height: 100px;
-    background-size: contain;    
+    padding: 0px 0px 0px 160px;
+    height: 120px;
+    
+    background-size: auto;
+    opacity: .8;
+}
+ul.gucu-sub-child-cats li.gucu-thumb:hover{
+    background-color: #fafafa;
+    cursor: pointer;
+    opacity: 1;
 }
 ul.gucu-sub-child-cats li.gucu-thumb p{
-    font-size: 1rem;
-    text-align: left;    
+    font-size: 13px;
+    text-align: left;  
+    display: none;
+}
+a.gucu-single-post{
+    font-size: 14px;
+}
+@media screen and ( min-width:802px){
+    ul.gucu-sub-child-cats li.gucu-thumb{
+        height: 180px;
+    }
+    ul.gucu-sub-child-cats li.gucu-thumb p{
+        font-size: 14px;
+        display: block;
+    }    
+}
+@media screen and ( min-width:1022px){
+    a.gucu-single-post{
+        font-size: 16px;
+    }    
+
 }
