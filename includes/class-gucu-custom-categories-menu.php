@@ -41,7 +41,7 @@ class Gucu_Custom_Categories_Menu {
             $this->html .= '<li>';
 
             $parent = $this->parent_category();
-            $this->html .='<a class="parent-cat" href="#">' . $parent->name . '</a>' . ' (' . $parent->count . ')';
+            $this->html .='<a class="parent-cat" href="#">' . $parent->name . '</a>';
 
             $args = array('parent' => $this->parent_cat, 'hide_empty' => false);
             $categories = get_categories($args);
@@ -50,7 +50,7 @@ class Gucu_Custom_Categories_Menu {
                 $open_icon = ($has_children) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
                 $this->html .= '<ul class="gucu-sub-cats">';
                 $this->html .= '<li>';
-                $this->html .= $open_icon . '<a class="parent-cat" href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
+                $this->html .= $open_icon . '<a class="parent-cat" href="#">' . $category->name . '</a>' ;
                 // Child Cat
                 if ( $has_children ) {
                     $this->html .= $this->get_sub_category( $category->term_id );
@@ -80,31 +80,31 @@ class Gucu_Custom_Categories_Menu {
         $args = array('parent' => $id, 'hide_empty' => false);
         $categories = get_categories($args);
         foreach ($categories as $category) {
-            $has_posts = ($category->count)? true : false;
+            $has_posts = ($category->count) ? true : false;
             $open_icon = ($has_posts) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
             $sub .= '<ul class="gucu-sub-child-cats">';
             $sub .= '<li>';
-            $sub .= $open_icon . '<a  class="parent-cat" href="#">' . $category->name . '</a>' . ' (' . $category->count . ')';
+            $sub .= $open_icon . '<a  class="parent-cat" href="#">' . $category->name . '</a>';
             if( $has_posts ){
                 $sub .='<ul class="gucu-sub-child-cats">';
                 $posts = get_posts( array ( 
                                             'category' => $category->term_id , 
                                             'post_status' =>'publish', 
                                             'orderby' => 'publish_date',
-                                            'order' => 'ASC'
+                                            'order' => 'ASC',
+                                            'numberposts' => -1
                                         ) 
                                 );
-                
+
                 foreach ($posts as $post) {
-//                    echo '<pre>';
-//                    var_dump($post);
-//                    echo '</pre>';
                     $post_thumbnail_url = get_the_post_thumbnail_url( $post->ID , array( 'post-thumbnail' ) );
                     $background_url = ( $post_thumbnail_url ) ? 'style="background-image:url(' .  $post_thumbnail_url .')"' : '';
+                    
                     $sub .= '<li class="gucu-thumb" '.$background_url.'>';
-                    $sub .= '<a href="'.get_permalink( $post->ID ).'">'.$post->post_title. '</a>';
-                    $sub .=   substr($post->post_content, 0, 76 ).'... ';
+                    $sub .= '<a class="gucu-single-post" href="'.get_permalink( $post->ID ).'">'.$post->post_title. '</a>';
+                    $sub .=  '<p>'. wp_trim_words($post->post_content, 50, '...<span class="readmore">Read more</span>').'</p>';
                     $sub .='</li>';
+                    
                 }
                 $sub .='</ul>';
             }
