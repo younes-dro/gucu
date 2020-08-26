@@ -102,7 +102,7 @@ class Gucu_Custom_Categories_Menu {
                     
                     $sub .= '<li class="gucu-thumb" '.$background_url.'>';
                     $sub .= '<a class="gucu-single-post" href="'.get_permalink( $post->ID ).'">'.$post->post_title. '</a>';
-                    $sub .=  '<p>'. wp_trim_words($post->post_content, 50, '...<span class="readmore">Read more</span>').'</p>';
+                    $sub .=  '<p>'. wp_trim_words($post->post_content, 50, '... <span class="readmore">Read more</span>').'</p>';
                     $sub .='</li>';
                     
                 }
