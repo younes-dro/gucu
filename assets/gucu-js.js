@@ -1,6 +1,12 @@
 ;(function($){
 
         $(document).ready(function(){
+        $('li.gucu-thumb').on('click', function (){
+            
+          var postUrl = $(this).find('a').prop('href');
+          window.location.href = postUrl;
+          
+        });
         $('a.parent-cat').on('click' , function(e){
             e.preventDefault();
         });
