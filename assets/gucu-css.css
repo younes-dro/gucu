@@ -64,11 +64,14 @@ a.gucu-single-post{
 span.readmore{
     color: black;
     text-decoration: none;
-    border-bottom: 1px dotted;    
+    border-bottom: 1px dotted;
+    display: block;
+    width: 90px;
+    padding: 0px;   
 }
 @media screen and ( min-width:802px){
     ul.gucu-sub-child-cats li.gucu-thumb{
-        height: 180px;
+        height: 242px;
     }
     ul.gucu-sub-child-cats li.gucu-thumb p{
         font-size: 14px;
