@@ -1,50 +1,44 @@
 
 
-body.page-template-bible article.page ,
-body.page-template-commentary article.page{
-    margin-top: 14px;
-    /* border-top: 0; */
+body.page-template-bible article.page.gucu-custom-bibe ,
+body.page-template-commentary article.page.gucu-custom-bibe{
+    margin-top: 0px;
+    padding-right: 15px;
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
+    /*background-color: #f00;*/ 
+    box-shadow: none;
+    border-top: none;
 }
-
-body.page-template-bible article.page ul,
-body.page-template-commentary article.page ul{
-
-    list-style-type: none;
+body.page-template-bible article.page.gucu-custom-bibe div.container-cat ,
+body.page-template-commentary article.page.gucu-custom-bibe div.container-cat{
+    /*background-color: #0f0;*/
 }
-
-span.ionicons.ion-ios-add-circle-outline,
-span.ion-ios-remove-circle-outline{
-    font-size: 12px;
-    transform: scale(2);
-    display: inline-block;
-    margin-right: 11px;
-    cursor: pointer;        
-}
-ul.gucu-cats{
-
-}
-ul.gucu-sub-cats{
-    /*display: none;*/
-    margin-left: 12px;
-}
-ul.gucu-sub-child-cats{
-
+body.page-template-bible article.page.gucu-custom-bibe::before,
+body.page-template-commentary article.page.gucu-custom-bibe::before{
     display: none;
-    margin-left: 12px;
 }
-ul.gucu-sub-child-cats.open{
+body.page-template-bible article.page.gucu-custom-bibe::after,
+body.page-template-commentary article.page.gucu-custom-bibe::after{
+    display: none;
+}
+p.content-chapters{
+    margin-top: 20px;
+}
+body.page-template-bible article.page.gucu-custom-bibe a.parent-cat ,
+body.page-template-commentary article.page.gucu-custom-bibe a.parent-cat{
     display: block;
+    margin-bottom: 14px;
 }
+
 ul.gucu-sub-child-cats li.gucu-thumb{
     background-repeat: no-repeat;
     border: 1px solid #ccc;
     margin: 4px 4px;
     padding: 0px 0px 0px 160px;
     height: 120px;
-    
+
     background-size: auto;
     opacity: .8;
 }
@@ -69,7 +63,17 @@ span.readmore{
     width: 90px;
     padding: 0px;   
 }
+p.gucu-loader{
+    background-image: url(gucu-loader.gif);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+    /* border: 1px solid #f00; */
+    background-position: center center;
+    background-size: auto;
+}
 @media screen and ( min-width:802px){
+
     ul.gucu-sub-child-cats li.gucu-thumb{
         height: 242px;
     }
@@ -79,6 +83,28 @@ span.readmore{
     }    
 }
 @media screen and ( min-width:1022px){
+    body.page-template-bible article.page.gucu-custom-bibe div.container-cat ,
+    body.page-template-commentary article.page.gucu-custom-bibe div.container-cat{
+        display: flex;
+    }
+    body.page-template-bible article.page.gucu-custom-bibe div.container-subcat,
+    body.page-template-commentary article.page.gucu-custom-bibe div.container-subcat{    
+        margin-right: 20px;
+        width: 50%;
+    }
+    body.page-template-bible article.page.gucu-custom-bibe a.parent-cat ,
+    body.page-template-commentary article.page.gucu-custom-bibe a.parent-cat{
+        display: inline-block;
+
+    }    
+    p.content-chapters{
+        /*        background-color: bisque;*/
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 15px;
+        font-size: 1rem;        
+    }
     a.gucu-single-post{
         font-size: 16px;
     }    

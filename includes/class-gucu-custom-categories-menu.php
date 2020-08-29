@@ -36,30 +36,26 @@ class Gucu_Custom_Categories_Menu {
 
         if ($this->parent_category()) {
 
-            $this->html = '<article style="margin-top:14px;" class="gucu-custom-bibe page type-page status-publish has-post-thumbnail entry">';
-            $this->html .='<ul class="gucu-cats">';
-            $this->html .= '<li>';
-
-            $parent = $this->parent_category();
-            $this->html .='<a class="parent-cat" href="#">' . $parent->name . '</a>';
-
+            $this->html = '<article class="gucu-custom-bibe page type-page status-publish has-post-thumbnail entry">';
+            $this->html .= '<div class="container-cat">';
+            
             $args = array('parent' => $this->parent_cat, 'hide_empty' => false);
             $categories = get_categories($args);
             foreach ($categories as $category) {
                 $has_children = ($this->category_has_children( $category->term_id )) ? true : false;
-                $open_icon = ($has_children) ? '<span class="gucu-open ionicons ion-ios-add-circle-outline"></span>' :'';
-                $this->html .= '<ul class="gucu-sub-cats">';
-                $this->html .= '<li>';
-                $this->html .= $open_icon . '<a class="parent-cat" href="#">' . $category->name . '</a>' ;
-                // Child Cat
+                $this->html .= '<div class="container-subcat">';
+                $this->html .=  '<a class="parent-cat" href="#">' . $category->name . '</a>' ;
+                // Books
                 if ( $has_children ) {
-                    $this->html .= $this->get_sub_category( $category->term_id );
+                    $this->html .= $this->get_drop_down_menu( $category->term_id );
                 }
-                $this->html .= '</li>';
-                $this->html .= '</ul>';
+                
+                $this->html .= '</div>';
             }
-            $this->html .= '</li>';
-            $this->html .= '</ul></article>';
+            $this->html .= '</div>';
+            $this->html .='<p class="content-chapters"></p>';
+            $this->html .= '</article>';
+            
         } else {
             $this->html = 'This category does not exist !';
         }
@@ -73,11 +69,26 @@ class Gucu_Custom_Categories_Menu {
 
         return $parent_cat;
     }
-
+    
+    private function get_drop_down_menu( $id ){
+    
+        $args = array('parent' => $id, 'hide_empty' => false, 'orderby' => 'id');  
+        $books = get_categories($args);
+        $books_menu = '<select name="gucu-books-bible" id="gucu-books-bible-'.$id.'" class="gucu-books-bible">';
+        $books_menu .= '<option value=""></option>';
+        foreach ($books as $book ) {
+            $books_menu .= '<option value="'.$book->term_id.'">';
+            $books_menu .= $book->name;
+            $books_menu .= '</option>';
+        }
+        $books_menu .= '</select>';
+        
+        return $books_menu;
+    }
     private function get_sub_category($id) {
         $sub ='';
         
-        $args = array('parent' => $id, 'hide_empty' => false);
+        $args = array('parent' => $id, 'hide_empty' => false, 'orderby' => 'id');
         $categories = get_categories($args);
         foreach ($categories as $category) {
             $has_posts = ($category->count) ? true : false;

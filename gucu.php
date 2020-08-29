@@ -8,7 +8,7 @@
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         1.0.4
+ * Version:         2.0.0
  *
  * @package         Gucu
  */
@@ -259,6 +259,9 @@ class Gucu_Custom_Queries{
         add_filter('page_template', array($this ,  'catch_commentary_template' ) );
         add_action( 'wp_enqueue_scripts', array( $this , 'gucu_enqueue') );
         
+        add_action( 'wp_ajax_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );
+        add_action( 'wp_ajax_nopriv_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );        
+        
     }
     public function load_custom_template( $templates ){
         
@@ -290,10 +293,29 @@ class Gucu_Custom_Queries{
     public function gucu_enqueue(){
         if( is_page_template( 'bible.php' ) || is_page_template( 'commentary.php' ) ){
             wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/assets/gucu-js.js' , array('jquery'));
-            wp_enqueue_style( 'style-name', $this->plugin_url() . '/assets/gucu-css.css' );
-        }        
+            wp_enqueue_script( 'gucu-select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js', array( 'jquery' ), Gucu_Custom_Queries()->version, true );
+            
+            wp_enqueue_style( 'gucu-custom-css', $this->plugin_url() . '/assets/gucu-css.css' );
+            wp_enqueue_style( 'gucu-selec2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css', array( ), Gucu_Custom_Queries()->version );
+            
+            wp_localize_script(
+		'gucu-custom-js',
+		'gucu_ajax_obj',
+		array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce('ajax-nonce')
+		)
+            );            
+                
+        }
     }
     
+    public function gucu_ajax_request (){
+        
+        Gucu_Ajax::sendRequest();
+    }
+
+
     /*-----------------------------------------------------------------------------------*/
     /*  Helper Functions                                                                 */
     /*-----------------------------------------------------------------------------------*/
