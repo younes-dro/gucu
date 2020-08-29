@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
  * 
  * @class Gucu_Custom_Categories_Menu
  * @author Younes DRO <younesdro@gmail.com>
- * @version 1.0.0
+ * @version 2.0.0
  * @since 1.0.0
  */
 class Gucu_Custom_Categories_Menu {
