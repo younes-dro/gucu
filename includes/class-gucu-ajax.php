@@ -16,8 +16,8 @@ if (!defined('ABSPATH')) {
  * 
  * @class Gucu_Ajax
  * @author Younes DRO <younesdro@gmail.com>
- * @version 1.0.0
- * @since 1.0.0
+ * @version 2.0.0
+ * @since 2.0.0
  */
 class Gucu_Ajax {
 
@@ -35,7 +35,8 @@ class Gucu_Ajax {
     }
 
     public static function getChapters($book) {
-        
+            $category = get_category($book);
+            echo '<h4>' . $category->name . '</h4>';
             $chapters .='<ul class="gucu-sub-child-cats">';
             $posts = get_posts(array(
                 'category' => $book,
