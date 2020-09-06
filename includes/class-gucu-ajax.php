@@ -36,6 +36,9 @@ class Gucu_Ajax {
 
     public static function getChapters($book) {
             $category = get_category($book);
+            $parent_category = get_category_parents($category->term_id, false,'/');
+            $c = explode('/', $parent_category);
+            echo '<span>'. $c[0] .'</span>' . ' > ' . '<span>' . $c[1] .'</span>';
             echo '<h4>' . $category->name . '</h4>';
             $chapters .='<div class="gucu-sub-child-cats">';
             $posts = get_posts(array(
@@ -49,11 +52,12 @@ class Gucu_Ajax {
 
             foreach ($posts as $post) {
                 $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, array('post-thumbnail'));
-                $background_url = ( $post_thumbnail_url ) ? 'style="background-image:url(' . $post_thumbnail_url . ')"' : '';
 
-                $chapters .= '<div class="gucu-thumb" ' . $background_url . '>';
+                $chapters .= '<div class="gucu-thumb">';
+                $chapters .= '<img src="'.$post_thumbnail_url.'" />';
                 $chapters .= '<a class="gucu-single-post" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>';
-                $chapters .= '<p>' . wp_trim_words($post->post_content, 50, '<a href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+                $chapters .= '<p class="large-excerpt">' . wp_trim_words($post->post_content, 50, '<a href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+                $chapters .= '<p class="small-excerpt">' . wp_trim_words($post->post_content, 50, '<a href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
                 $chapters .='</div>';
             }
             $chapters .='</div>';
