@@ -265,7 +265,7 @@ class Gucu_Custom_Queries{
     }
     public function load_custom_template( $templates ){
         
-        $templates['bible.php'] = 'Biblle Page Template';
+        $templates['bible.php'] = 'Bible Page Template';
         $templates['commentary.php'] = 'Commentary Page Template';
         
         return $templates;
