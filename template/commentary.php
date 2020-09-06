@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Template Name: Commentary Template
+ * Template Name: Commentary Template
  *
  */
 
