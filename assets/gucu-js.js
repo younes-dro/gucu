@@ -5,8 +5,43 @@
 ;
 (function ($) {
 
+
+    function getSliderSettings() {
+        return {
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1022,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true
+                    }
+                },
+                {
+                    breakpoint: 802,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        };
+    }
+    
     $(document).ready(function () {
-        $('li.gucu-thumb').on('click', function () {
+        $('div.gucu-thumb').on('click', function () {
 
             var postUrl = $(this).find('a').prop('href');
             window.location.href = postUrl;
@@ -43,6 +78,7 @@
                 },
                 success: function (data) {
                     $('.content-chapters').removeClass('gucu-loader').html(data);
+                    $('.gucu-sub-child-cats').slick(getSliderSettings());
                 },
                 error: function (errorThrown) {
                     console.log(errorThrown);

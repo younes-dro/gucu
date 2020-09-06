@@ -8,7 +8,7 @@
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         2.0.0
+ * Version:         3.0.0
  *
  * @package         Gucu
  */
@@ -292,11 +292,16 @@ class Gucu_Custom_Queries{
     
     public function gucu_enqueue(){
         if( is_page_template( 'bible.php' ) || is_page_template( 'commentary.php' ) ){
-            wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/assets/gucu-js.js' , array('jquery'));
+            
             wp_enqueue_script( 'gucu-select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js', array( 'jquery' ), Gucu_Custom_Queries()->version, true );
+            wp_enqueue_script('gucu-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Gucu_Custom_Queries()->version, true);            
+            wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/assets/gucu-js.js' , array('jquery'), Gucu_Custom_Queries()->version, true);
             
             wp_enqueue_style( 'gucu-custom-css', $this->plugin_url() . '/assets/gucu-css.css' );
             wp_enqueue_style( 'gucu-selec2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css', array( ), Gucu_Custom_Queries()->version );
+            
+            wp_enqueue_style('gucu-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
+            wp_enqueue_style('gucu-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css');        
             
             wp_localize_script(
 		'gucu-custom-js',

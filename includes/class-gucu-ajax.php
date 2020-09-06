@@ -37,7 +37,7 @@ class Gucu_Ajax {
     public static function getChapters($book) {
             $category = get_category($book);
             echo '<h4>' . $category->name . '</h4>';
-            $chapters .='<ul class="gucu-sub-child-cats">';
+            $chapters .='<div class="gucu-sub-child-cats">';
             $posts = get_posts(array(
                 'category' => $book,
                 'post_status' => 'publish',
@@ -51,12 +51,12 @@ class Gucu_Ajax {
                 $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, array('post-thumbnail'));
                 $background_url = ( $post_thumbnail_url ) ? 'style="background-image:url(' . $post_thumbnail_url . ')"' : '';
 
-                $chapters .= '<li class="gucu-thumb" ' . $background_url . '>';
+                $chapters .= '<div class="gucu-thumb" ' . $background_url . '>';
                 $chapters .= '<a class="gucu-single-post" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>';
                 $chapters .= '<p>' . wp_trim_words($post->post_content, 50, '<a href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
-                $chapters .='</li>';
+                $chapters .='</div>';
             }
-            $chapters .='</ul>';
+            $chapters .='</div>';
             
             return $chapters;
         
