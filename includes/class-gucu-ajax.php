@@ -59,7 +59,7 @@ class Gucu_Ajax {
 
     public static function getChapters( $book , $post ) {
             $category = get_category( $book );
-            echo '<h4>' . $category->name . ' : '.self::getPost($post)->post_title .'</h4>';
+            echo '<h4>' . $category->name . '</h4>';
             $chapters .='<div class="gucu-sub-child-cats">';
             $posts = self::getPosts( $book );
 
