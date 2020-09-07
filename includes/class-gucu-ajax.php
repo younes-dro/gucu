@@ -83,7 +83,7 @@ class Gucu_Ajax {
         return $posts = get_posts(array(
                 'category' => $book,
                 'post_status' => 'publish',
-                'orderby' => 'title',
+                'orderby' => 'id',
                 'order' => 'ASC',
                 'numberposts' => -1
                     )
