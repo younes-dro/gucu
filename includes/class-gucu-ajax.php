@@ -64,7 +64,7 @@ class Gucu_Ajax {
             $posts = self::getPosts( $book );
 
             foreach ($posts as $post) {
-                $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, array('post-thumbnail'));
+                $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, 'featured-blog');
 
                 $chapters .= '<div class="gucu-thumb">';
                 $chapters .= '<img src="'.$post_thumbnail_url.'" />';

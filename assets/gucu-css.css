@@ -11,6 +11,14 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     box-shadow: none;
     border-top: none;
 }
+body.page-template-bible  .content > .entry::after ,
+body.page-template-commentary  .content > .entry::after{
+    display: none;
+}
+body.page-template-bible  .content > .entry::before ,
+body.page-template-commentary  .content > .entry::before{
+    display: none;
+}
 body.page-template-bible article.page.gucu-custom-bibe div.container-cat ,
 body.page-template-commentary article.page.gucu-custom-bibe div.container-cat{
     /*background-color: #0f0;*/
@@ -73,19 +81,20 @@ p.content-chapters{
     margin-top: 20px;
 }
 p.content-chapters h4{
-    color: #444;
+    color: #554948;
     font-family: ArialMT, "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
-    font-size: 1.125rem;
+    font-size: 36px;
     font-weight: bold;
     letter-spacing: 1px;
     margin: 3rem 0;
     text-align: center;
-    text-transform: uppercase;    
+    text-transform: uppercase;   
 }
 body.page-template-bible article.page.gucu-custom-bibe a.parent-cat ,
 body.page-template-commentary article.page.gucu-custom-bibe a.parent-cat{
     display: block;
     margin-bottom: 14px;
+    border: none;
 }
 div.gucu-sub-child-cats {
     /*border: 1px solid #f00;*/
@@ -124,6 +133,7 @@ div.gucu-sub-child-cats div.gucu-thumb{
 }
 div.gucu-sub-child-cats div.gucu-thumb img{
     margin: 0 auto;
+    max-width: 40%;
 }
 div.gucu-sub-child-cats div.gucu-thumb:hover{
 
@@ -135,12 +145,12 @@ div.gucu-sub-child-cats div.gucu-thumb p.large-excerpt{
 }
 div.gucu-sub-child-cats div.gucu-thumb p{
     font-size: 14px;
-    text-align: left;  
-    /*display: none;*/
     text-align: left;
-    color: #444;
-    font-family: ArialMT, "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
-    text-align: left;    
+    /* display: none; */
+    text-align: left;
+    color: #554948;
+    font-family: Montserrat, sans-serif;
+    text-align: left;
     padding-right: 5px;
     padding-left: 5px;
 }
@@ -148,14 +158,19 @@ a.gucu-single-post{
     font-size: 22px;
     margin: 10px auto;
     display: inline-block;
+    border: none;
 }
 span.readmore{
-    color: black;
+    color: #ce3a0d;
     text-decoration: none;
-    border-bottom: 1px dotted;
+    /* border-bottom: 1px dotted; */
     display: block;
-    width: 90px;
-    padding: 0px;   
+    width: 104px;
+    padding: 0px;
+    font-size: 16px   
+}
+span.readmore:hover{
+    color: #000;
 }
 .gucu-loader{
     background-image: url(gucu-loader.gif);
@@ -187,6 +202,12 @@ div.gucu-sub-child-cats div.gucu-thumb{
     }   
     div.gucu-sub-child-cats {
         width: 600px;
+    }    
+    p.content-chapters h4{
+     font-size: 48px;   
+    }
+    div.gucu-sub-child-cats div.gucu-thumb p{
+        font-size: 18px;
     }    
 }
 @media screen and ( min-width:1022px){
