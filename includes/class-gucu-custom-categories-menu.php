@@ -39,7 +39,7 @@ class Gucu_Custom_Categories_Menu {
             $this->html = '<article class="gucu-custom-bibe page type-page status-publish has-post-thumbnail entry">';
             $this->html .= '<div class="container-cat">';
             
-            $args = array('parent' => $this->parent_cat, 'hide_empty' => false);
+            $args = array('parent' => $this->parent_cat, 'hide_empty' => false, 'orderby' => 'name' , 'order' => 'desc');
             $categories = get_categories($args);
             foreach ($categories as $category) {
                 $has_children = ($this->category_has_children( $category->term_id )) ? true : false;
