@@ -25,30 +25,43 @@ class Gucu_Ajax {
      * 
      * @param init $book The boook id
      */
-    public static function sendRequest() {
+    public static function sendRequest( $request = '' ) {
 
         $book = $_POST['book'];
-
-        echo self::getChapters( $book );
+        $post  = $_POST['post'];
+        if ( $request == 'grid'){
+            echo self::buildGridPosts(  $book   );
+        }else{
+            echo self::getChapters( $book , $post);
+        }
 
         die();
     }
+    
+    public static function buildGridPosts( $book ){
 
-    public static function getChapters($book) {
-            $category = get_category($book);
-            $parent_category = get_category_parents($category->term_id, false,'/');
-            $c = explode('/', $parent_category);
-            echo '<span>'. $c[0] .'</span>' . ' > ' . '<span>' . $c[1] .'</span>';
-            echo '<h4>' . $category->name . '</h4>';
+       
+        $grid  = '<div class="grid">';
+        $grid .= '<h4>CHAPTER<span class="close-chapter ionicons ion-ios-close"></span></h4>';
+        $grid .='<div class="grid-content">';
+        $posts = self::getPosts( $book );
+        
+        foreach ($posts as $index=>$post ) {
+            
+            $grid .=  '<a class="chapter-number" href="#" data-slide-index="'. $index .'" data-book-id ="'.$book.'" data-post-id="'.$post->ID.'">'.$post->post_title .'</a>';
+        }
+        $grid .='</div>';//content grid
+        $grid .= '</div>';//grid
+        
+        return $grid;
+        
+    }
+
+    public static function getChapters( $book , $post ) {
+            $category = get_category( $book );
+            echo '<h4>' . $category->name . ' : '.self::getPost($post)->post_title .'</h4>';
             $chapters .='<div class="gucu-sub-child-cats">';
-            $posts = get_posts(array(
-                'category' => $book,
-                'post_status' => 'publish',
-                'orderby' => 'publish_date',
-                'order' => 'ASC',
-                'numberposts' => -1
-                    )
-            );
+            $posts = self::getPosts( $book );
 
             foreach ($posts as $post) {
                 $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, array('post-thumbnail'));
@@ -64,6 +77,20 @@ class Gucu_Ajax {
             
             return $chapters;
         
+    }
+    
+    public static function getPosts( $book ){
+        return $posts = get_posts(array(
+                'category' => $book,
+                'post_status' => 'publish',
+                'orderby' => 'title',
+                'order' => 'ASC',
+                'numberposts' => -1
+                    )
+            );
+    }
+    public static function getPost($id){
+        return get_post($id);
     }
 
 }

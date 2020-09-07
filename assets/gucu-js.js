@@ -6,12 +6,13 @@
 (function ($) {
 
 
-    function getSliderSettings() {
+    function getSliderSettings( indexSide ) {
         return {
             dots: true,
             infinite: true,
             speed: 300,
             slidesToShow: 1,
+            initialSlide: indexSide,
             slidesToScroll: 1,
             responsive: [
                 {
@@ -61,15 +62,51 @@
         });
     }
     $(document).ready(function () {
-        $('select.gucu-books-bible').on('change', function () {
+        $('select.gucu-books-bible').on("select2:open", function (e) { 
+//            console.log( this.value); 
+            $('div.posts-numbers').addClass('open');
+        });
+        $('select.gucu-books-bible').on('change focus', function () {
             var book = this.value;
-
+            $.ajax({
+                type: 'POST',
+                url: gucu_ajax_obj.ajaxurl,
+                data: {
+                    'action' : 'grid_ajax_request',
+                    'book' : book,
+                    'nonce': gucu_ajax_obj.nonce
+                },
+                beforeSend: function(){
+                    $('.content-chapters').html('');
+                    $('div.posts-numbers').html('');
+                    $('div.posts-numbers').addClass('open');
+                    $('div.posts-numbers').addClass('gucu-loader');
+                },
+                success: function( data){
+                    $('div.posts-numbers').removeClass('gucu-loader').html( data);                  
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        });
+        
+        $(document).on('click', 'span.close-chapter', function(){
+           $('div.posts-numbers').removeClass('open'); 
+        });
+        $(document).on('click', 'a.chapter-number', function(e){
+            e.preventDefault();
+            var book =  $(this).data('book-id');
+            var post =  $(this).data('post-id');
+            var indexSide = $(this).data('slide-index');
+            $('span.close-chapter').trigger('click');
             $.ajax({
                 type: 'POST',
                 url: gucu_ajax_obj.ajaxurl,
                 data: {
                     'action': 'gucu_ajax_request',
                     'book': book,
+                    'post' : post,
                     'nonce': gucu_ajax_obj.nonce
                 },
                 beforeSend: function () {
@@ -78,15 +115,16 @@
                 },
                 success: function (data) {
                     $('.content-chapters').removeClass('gucu-loader').html(data);
-                    $('.gucu-sub-child-cats').slick(getSliderSettings());
+                    $('.gucu-sub-child-cats').slick(getSliderSettings(indexSide));
                 },
                 error: function (errorThrown) {
                     console.log(errorThrown);
                 }
-            });
-
+            });            
+            
         });
     });
+    
 })(jQuery);
 
 

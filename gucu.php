@@ -8,7 +8,7 @@
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         3.0.0
+ * Version:         4.0.0
  *
  * @package         Gucu
  */
@@ -260,7 +260,9 @@ class Gucu_Custom_Queries{
         add_action( 'wp_enqueue_scripts', array( $this , 'gucu_enqueue') );
         
         add_action( 'wp_ajax_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );
-        add_action( 'wp_ajax_nopriv_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );        
+        add_action( 'wp_ajax_nopriv_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );
+        add_action( 'wp_ajax_grid_ajax_request', array ( $this , 'grid_ajax_request' ) );
+        add_action( 'wp_ajax_nopriv_grid_ajax_request', array ( $this , 'grid_ajax_request' ) );        
         
     }
     public function load_custom_template( $templates ){
@@ -317,8 +319,13 @@ class Gucu_Custom_Queries{
     
     public function gucu_ajax_request (){
         
-        Gucu_Ajax::sendRequest();
+        Gucu_Ajax::sendRequest('');
     }
+    
+    public function grid_ajax_request (){
+        
+        Gucu_Ajax::sendRequest('grid');
+    }    
 
 
     /*-----------------------------------------------------------------------------------*/
