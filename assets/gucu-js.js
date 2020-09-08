@@ -129,9 +129,7 @@
             e.preventDefault();
             var p = $(this).data('post-id');
             $('div.content-full-post').html('Loading....');
-//                $('html,body').animate({
-//                    scrollTop: $("#content-full-post").offset().top
-//                }, 'slow');
+            
                 $.ajax({
                 type: 'POST',
                 url: gucu_ajax_obj.ajaxurl,
@@ -141,13 +139,17 @@
                     'nonce': gucu_ajax_obj.nonce
                 },
                 beforeSend: function () {
-//                    $('.content-chapters').html('');
-//                    $('p.content-chapters').addClass('gucu-loader');
+                    $('div.content-full-post').html('');
+                    $('div.content-full-post').addClass('gucu-loader');
                 },
                 success: function (data) {
+                    $('div.content-full-post').removeClass('gucu-loader');
+                    $scrollTop = $("#content-full-post").offset().top;
+                    
+                    $('html,body').animate({
+                        scrollTop: $scrollTop - 80 
+                    }, 'slow');
                     $('div.content-full-post').html(data);
-//                    $('.content-chapters').removeClass('gucu-loader').html(data);
-//                    $('.gucu-sub-child-cats').slick(getSliderSettings(indexSide));
                 },
                 error: function (errorThrown) {
                     console.log(errorThrown);

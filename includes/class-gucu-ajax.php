@@ -84,10 +84,20 @@ class Gucu_Ajax {
     public static function fullPostContent( $post ){
         
         $the_post = self::getPost( $post );
+        $author_id = $the_post->post_author;
+        $urlAuthor = get_author_posts_url($author_id);
         $post_thumbnail_url = get_the_post_thumbnail_url($the_post->ID, 'featured-blog');
         $content .= '<header class="entry-header"><h1 class="entry-title" itemprop="headline">'.$the_post->post_title.'</h1></header>';
         $content .= '<img src="'.$post_thumbnail_url.'" />';
         $content .= '<div class="entry-content" itemprop="text">'.$the_post->post_content.'</div>';
+        $content .= '<footer class="entry-footer">';
+        $content .= '<div class="alignleft">';
+        $content .= '<img src="'.get_avatar_url( $the_post ).'" class="avatar" />';
+        $content .= '</div>';
+        $content .= '<p class="entry-meta">';
+        $content .= '<span class="entry-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person">Written by:<br><a href="'.$urlAuthor .'" class="entry-author-link" rel="author" itemprop="url"><span class="entry-author-name" itemprop="name">'. get_the_author_meta( 'user_nicename' , $author_id ) .'</span></a></span>';
+        $content .= '</p>';
+        $content .= '</footer>';
         
         return $content;
     }

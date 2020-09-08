@@ -6,10 +6,15 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     padding-right: 15px;
     padding-left: 15px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
     /*background-color: #f00;*/ 
     box-shadow: none;
     border-top: none;
+}
+body.page-template-bible article.page.gucu-custom-bibe footer.entry-footer,
+body.page-template-commentary article.page.gucu-custom-bibe footer.entry-footer{
+    margin-left: -15px;
+    margin-right: -15px;
 }
 body.page-template-bible  .content > .entry::after ,
 body.page-template-commentary  .content > .entry::after{
@@ -37,6 +42,7 @@ div.posts-numbers{
     margin-top: 10px;
     display: none;
     padding: 1px;
+    min-height: 200px;
 }
 div.posts-numbers.open{
     display: block;
