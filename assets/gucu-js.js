@@ -79,6 +79,7 @@
                 beforeSend: function(){
                     $('.content-chapters').html('');
                     $('div.posts-numbers').html('');
+                    $('div.content-full-post').html('');
                     $('div.posts-numbers').addClass('open');
                     $('div.posts-numbers').addClass('gucu-loader');
                 },
@@ -122,6 +123,33 @@
                 }
             });            
             
+        });
+        
+        $(document).on('click', 'a.read-full-post', function(e){
+            e.preventDefault();
+            var p = $(this).data('post-id');
+            $('div.content-full-post').html('Loading....');
+            $.ajax({
+                type: 'POST',
+                url: gucu_ajax_obj.ajaxurl,
+                data: {
+                    'action': 'full_post_ajax_request',
+                    'post' : p,
+                    'nonce': gucu_ajax_obj.nonce
+                },
+                beforeSend: function () {
+//                    $('.content-chapters').html('');
+//                    $('p.content-chapters').addClass('gucu-loader');
+                },
+                success: function (data) {
+                    $('div.content-full-post').html(data);
+//                    $('.content-chapters').removeClass('gucu-loader').html(data);
+//                    $('.gucu-sub-child-cats').slick(getSliderSettings(indexSide));
+                },
+                error: function (errorThrown) {
+                    console.log(errorThrown);
+                }
+            });            
         });
     });
     

@@ -31,6 +31,8 @@ class Gucu_Ajax {
         $post  = $_POST['post'];
         if ( $request == 'grid'){
             echo self::buildGridPosts(  $book   );
+        }else if( $request == 'fullpost'){
+            echo self::fullPostContent( $post );
         }else{
             echo self::getChapters( $book , $post);
         }
@@ -69,8 +71,8 @@ class Gucu_Ajax {
                 $chapters .= '<div class="gucu-thumb">';
                 $chapters .= '<img src="'.$post_thumbnail_url.'" />';
                 $chapters .= '<a class="gucu-single-post" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>';
-                $chapters .= '<p class="large-excerpt">' . wp_trim_words($post->post_content, 50, '<a href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
-                $chapters .= '<p class="small-excerpt">' . wp_trim_words($post->post_content, 50, '<a href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+                $chapters .= '<p class="large-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+                $chapters .= '<p class="small-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
                 $chapters .='</div>';
             }
             $chapters .='</div>';
@@ -78,7 +80,19 @@ class Gucu_Ajax {
             return $chapters;
         
     }
-    
+
+    public static function fullPostContent( $post ){
+        
+        $the_post = self::getPost( $post );
+        $post_thumbnail_url = get_the_post_thumbnail_url($the_post->ID, 'featured-blog');
+        $content .= '<header class="entry-header"><h1 class="entry-title" itemprop="headline">'.$the_post->post_title.'</h1></header>';
+        $content .= '<img src="'.$post_thumbnail_url.'" />';
+        $content .= '<div class="entry-content" itemprop="text">'.$the_post->post_content.'</div>';
+        
+        return $content;
+    }
+
+
     public static function getPosts( $book ){
         return $posts = get_posts(array(
                 'category' => $book,
