@@ -79,6 +79,7 @@ div.posts-numbers .grid .grid-content a:hover{
 /************************ End Grid *****************/
 p.content-chapters{
     margin-top: 20px;
+    min-height: 200px;
 }
 p.content-chapters h4{
     color: #554948;
