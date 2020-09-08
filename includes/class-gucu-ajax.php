@@ -84,9 +84,9 @@ class Gucu_Ajax {
     public static function fullPostContent( $post ){
         
         $the_post = self::getPost( $post );
-        $post_thumbnail_url = get_the_post_thumbnail_url($the_post->ID, 'featured-blog');
+//        $post_thumbnail_url = get_the_post_thumbnail_url($the_post->ID, 'featured-blog');
         $content .= '<header class="entry-header"><h1 class="entry-title" itemprop="headline">'.$the_post->post_title.'</h1></header>';
-        $content .= '<img src="'.$post_thumbnail_url.'" />';
+//        $content .= '<img src="'.$post_thumbnail_url.'" />';
         $content .= '<div class="entry-content" itemprop="text">'.$the_post->post_content.'</div>';
         
         return $content;
