@@ -158,6 +158,23 @@
         });
     });
     
+    $(document).ready(function(){
+    $(window).scroll(function () {
+        // Scroll to the top
+        if ($(this).scrollTop() > 800) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+
+    });
+    // Scroll to the top
+    $('.scrollup').click(function () {
+        $("html, body").animate({scrollTop: 0}, 200);
+        return false;
+    });        
+    });
+    
 })(jQuery);
 
 

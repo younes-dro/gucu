@@ -10,10 +10,27 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     /*background-color: #f00;*/ 
     box-shadow: none;
     border-top: none;
+    position: relative;
 }
 body.page-template-bible  .content > .entry::after ,
 body.page-template-commentary  .content > .entry::after{
     display: none;
+}
+a.scrollup {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 10px;
+    background-color: #fff;
+    display: none;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 99;
+    color: #554948;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    line-height: 50px;
 }
 body.page-template-bible  .content > .entry::before ,
 body.page-template-commentary  .content > .entry::before{
