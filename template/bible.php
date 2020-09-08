@@ -49,7 +49,7 @@
 			do_action( 'genesis_loop' );
                         // local : 218
                         // gucu: 337
-                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(218);
+                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(337);
                         echo $gucu_custom_cat_menu->get_html();                        
 
 			/**
