@@ -181,6 +181,14 @@ span.readmore:hover{
     background-position: center center;
     background-size: auto;
 }
+
+div.content-full-post img{
+    max-width: 60%;
+    margin: 10px auto;
+    width: 30%;
+    
+    display: block;    
+}
 @media screen and ( min-width:802px){
 
 div.gucu-sub-child-cats div.gucu-thumb{

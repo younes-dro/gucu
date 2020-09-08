@@ -129,7 +129,10 @@
             e.preventDefault();
             var p = $(this).data('post-id');
             $('div.content-full-post').html('Loading....');
-            $.ajax({
+//                $('html,body').animate({
+//                    scrollTop: $("#content-full-post").offset().top
+//                }, 'slow');
+                $.ajax({
                 type: 'POST',
                 url: gucu_ajax_obj.ajaxurl,
                 data: {

@@ -55,7 +55,7 @@ class Gucu_Custom_Categories_Menu {
             $this->html .= '</div>';
             $this->html .='<div class="posts-numbers"></div>';
             $this->html .='<p class="content-chapters"></p>';
-            $this->html .='<div class="content-full-post"></div>';
+            $this->html .='<div class="content-full-post" id="content-full-post"></div>';
             $this->html .= '</article>';
             
         } else {
