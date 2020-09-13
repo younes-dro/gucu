@@ -275,4 +275,7 @@ div.gucu-sub-child-cats div.gucu-thumb{
     div.posts-numbers .grid .grid-content a{ 
         width: 20%;
     }
+    a.scrollup {   
+        right: 190px;
+    }    
 }
