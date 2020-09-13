@@ -170,7 +170,7 @@
     });
     // Scroll to the top
     $('.scrollup').click(function () {
-        $("html, body").animate({scrollTop: 0}, 200);
+        $("html, body").animate({scrollTop: 300}, 200);
         return false;
     });        
     });
