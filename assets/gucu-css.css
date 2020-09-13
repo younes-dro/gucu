@@ -173,7 +173,7 @@ div.gucu-sub-child-cats div.gucu-thumb p{
     padding-left: 5px;
 }
 a.gucu-single-post{
-    font-size: 16px;
+    font-size: 30px;
     margin: 10px auto;
     display: inline-block;
     border: none;
@@ -231,7 +231,7 @@ div.gucu-sub-child-cats div.gucu-thumb{
         width: 600px;
     }    
     p.content-chapters h4{
-     font-size: 48px;   
+     font-size: 40px;   
     }
     div.gucu-sub-child-cats div.gucu-thumb p{
         font-size: 18px;
@@ -274,7 +274,7 @@ div.gucu-sub-child-cats .slick-next{
     top:10%;
 }
     a.gucu-single-post{
-        font-size: 22px;
+        font-size: 36px;
     }
     div.posts-numbers .grid .grid-content a{ 
         width: 20%;
