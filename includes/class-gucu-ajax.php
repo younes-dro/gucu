@@ -69,10 +69,11 @@ class Gucu_Ajax {
                 $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, 'featured-blog');
 
                 $chapters .= '<div class="gucu-thumb">';
-                $chapters .= '<img src="'.$post_thumbnail_url.'" />';
+//                $chapters .= '<img src="'.$post_thumbnail_url.'" />';
                 $chapters .= '<a class="gucu-single-post" href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>';
-                $chapters .= '<p class="large-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
-                $chapters .= '<p class="small-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+//                $chapters .= '<p class="large-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+//                $chapters .= '<p class="small-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>';
+                $chapters .= '<p class="small-excerpt">'.$post->post_content.'</p>';
                 $chapters .='</div>';
             }
             $chapters .='</div>';
