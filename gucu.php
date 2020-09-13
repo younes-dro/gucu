@@ -8,7 +8,7 @@
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         4.1.0
+ * Version:         4.2.0
  *
  * @package         Gucu
  */
