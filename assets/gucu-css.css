@@ -104,7 +104,7 @@ p.content-chapters h4{
     font-size: 36px;
     font-weight: bold;
     letter-spacing: 1px;
-    margin: 3rem 0;
+    margin: 1rem 0 0 0;
     text-align: center;
     text-transform: uppercase;   
 }
@@ -124,7 +124,7 @@ div.gucu-sub-child-cats ul.slick-dots{
 }
 div.gucu-sub-child-cats .slick-prev, 
 div.gucu-sub-child-cats .slick-next{
-    top: 50%;
+    top: 2%;
     width: 50px;
     height: 50px;
     border: 1px solid #f9f6f6;
@@ -173,7 +173,7 @@ div.gucu-sub-child-cats div.gucu-thumb p{
     padding-left: 5px;
 }
 a.gucu-single-post{
-    font-size: 22px;
+    font-size: 16px;
     margin: 10px auto;
     display: inline-block;
     border: none;
@@ -269,8 +269,12 @@ div.gucu-sub-child-cats div.gucu-thumb{
     div.gucu-sub-child-cats .slick-next{
         right: -60px;
     }    
+div.gucu-sub-child-cats .slick-prev, 
+div.gucu-sub-child-cats .slick-next{
+    top:10%;
+}
     a.gucu-single-post{
-        font-size: 16px;
+        font-size: 22px;
     }
     div.posts-numbers .grid .grid-content a{ 
         width: 20%;
