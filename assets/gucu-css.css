@@ -271,7 +271,7 @@ div.gucu-sub-child-cats div.gucu-thumb{
     }    
 div.gucu-sub-child-cats .slick-prev, 
 div.gucu-sub-child-cats .slick-next{
-    top:10%;
+    top:10px;
 }
     a.gucu-single-post{
         font-size: 36px;
