@@ -16,7 +16,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-
+/**
+ * 
+ */
+if ( substr ( get_bloginfo('url'), 7 ,  3 ) !== '127' ){
+    define( 'BIBLE_ID' , 337 );
+    define( 'COMMENTARY_ID' , 536 );
+}else{
+    define( 'BIBLE_ID' , 218 );
+    define( 'COMMENTARY_ID' , 225);    
+}
 /**
  * Gucu_Custom_Queries class.
  * 
@@ -264,7 +273,12 @@ class Gucu_Custom_Queries{
         add_action( 'wp_ajax_grid_ajax_request', array ( $this , 'grid_ajax_request' ) );
         add_action( 'wp_ajax_nopriv_grid_ajax_request', array ( $this , 'grid_ajax_request' ) );
         add_action( 'wp_ajax_full_post_ajax_request', array ( $this , 'full_post_ajax_request' ) );         
-        add_action( 'wp_ajax_nopriv_full_post_ajax_request', array ( $this , 'full_post_ajax_request' ) );         
+        add_action( 'wp_ajax_nopriv_full_post_ajax_request', array ( $this , 'full_post_ajax_request' ) ); 
+        
+        if ( is_admin() ){
+            
+            add_action ( 'init' , array ( $this , 'add_custom_meta_box' ) );
+        }
         
     }
     public function load_custom_template( $templates ){
@@ -330,6 +344,9 @@ class Gucu_Custom_Queries{
     }    
     public function full_post_ajax_request(){
         Gucu_Ajax::sendRequest('fullpost');
+    }
+    public function add_custom_meta_box (){
+        Gucu_Admin::Attach_Category();
     }
 
     /*-----------------------------------------------------------------------------------*/

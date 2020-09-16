@@ -11,6 +11,7 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     box-shadow: none;
     border-top: none;
     position: relative;
+    border: none;
 }
 body.page-template-bible  .content > .entry::after ,
 body.page-template-commentary  .content > .entry::after{
@@ -94,9 +95,10 @@ div.posts-numbers .grid .grid-content a:hover{
     background-color: #f5f5f5;
 }
 /************************ End Grid *****************/
+/************************ Chapters *****************/
 p.content-chapters{
     margin-top: 20px;
-    min-height: 200px;
+    min-height: 500px;
 }
 p.content-chapters h4{
     color: #554948;
@@ -140,15 +142,17 @@ div.gucu-sub-child-cats .slick-prev:before,
 div.gucu-sub-child-cats .slick-next:before{
     color: #333;
 }
+
 div.gucu-sub-child-cats div.gucu-thumb{
     
     margin: 4px 4px;
     padding: 10px 36px 0px 28px;
-   
-    background-size: auto;
-
     text-align: center;
+    transition: max-height 0.7s linear;
 }
+/*div.gucu-sub-child-cats div.gucu-thumb.expanded{
+    max-height: 1500px;
+}*/
 div.gucu-sub-child-cats div.gucu-thumb img{
     margin: 0 auto;
     max-width: 40%;
@@ -178,16 +182,17 @@ a.gucu-single-post{
     display: inline-block;
     border: none;
 }
-span.readmore{
+a.readmore{
     color: #ce3a0d;
     text-decoration: none;
     /* border-bottom: 1px dotted; */
     display: block;
     width: 104px;
     padding: 0px;
-    font-size: 16px   
+    font-size: 14px;
+    margin-top: 10px;
 }
-span.readmore:hover{
+a.readmore:hover{
     color: #000;
 }
 .gucu-loader{
@@ -208,6 +213,33 @@ div.content-full-post img{
     
     display: block;    
 }
+p.content-chapters button.expand{
+    background-color: transparent;
+    color: #554948;
+    border: 1px solid #ccc;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;    
+}
+p.commentary-excerpt{
+    margin-top: 8px;
+    font-size: 14px;
+}
+p.commentary-excerpt a.gucu-single-commentary{
+    font-size: 15px;
+}
+/*p.content-chapters button.expand:hover{
+    border-width: 0;
+    box-shadow: none;
+    color: #ce3a0d;
+    outline: 1px solid #eee9e3;
+    outline-offset: -1px;    
+}
+p.content-chapters .ion-ios-more:before{
+    margin-right: 10px;
+}*/
+
 @media screen and ( min-width:802px){
 
 div.gucu-sub-child-cats div.gucu-thumb{
@@ -238,6 +270,9 @@ div.gucu-sub-child-cats div.gucu-thumb{
     }  
     div.posts-numbers .grid .grid-content a{ 
         width: 33.3333%;
+    }
+    p.commentary-excerpt{
+        font-size: 18px;
     }
 }
 @media screen and ( min-width:1022px){

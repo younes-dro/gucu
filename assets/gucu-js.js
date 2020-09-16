@@ -14,6 +14,7 @@
             slidesToShow: 1,
             initialSlide: indexSide,
             slidesToScroll: 1,
+            adaptiveHeight: true,
             responsive: [
                 {
                     breakpoint: 1022,
@@ -124,56 +125,62 @@
             });            
             
         });
+        // Expand the post
+//        $(document).on('click','button.expand',function(){
+//            $('div.gucu-thumb').toggleClass('expanded');
+////            $(this).fadeOut('slow');
+//        }); 
         
-        $(document).on('click', 'a.read-full-post', function(e){
-            e.preventDefault();
-            var p = $(this).data('post-id');
-            $('div.content-full-post').html('Loading....');
-            
-                $.ajax({
-                type: 'POST',
-                url: gucu_ajax_obj.ajaxurl,
-                data: {
-                    'action': 'full_post_ajax_request',
-                    'post' : p,
-                    'nonce': gucu_ajax_obj.nonce
-                },
-                beforeSend: function () {
-                    $('div.content-full-post').html('');
-                    $('div.content-full-post').addClass('gucu-loader');
-                },
-                success: function (data) {
-                    $('div.content-full-post').removeClass('gucu-loader').html(data);
-//                    console.log();
-                    $scrollTop = $("#content-full-post").offset().top;
-                    
-                    $('html,body').animate({
-                        scrollTop: $scrollTop - 80 
-                    }, 'slow');
-                },
-                error: function (errorThrown) {
-                    console.log(errorThrown);
-                }
-            });            
-        });
+//        $(document).on('click', 'a.read-full-post', function(e){
+//            e.preventDefault();
+//            var p = $(this).data('post-id');
+//            $('div.content-full-post').html('Loading....');
+//            
+//                $.ajax({
+//                type: 'POST',
+//                url: gucu_ajax_obj.ajaxurl,
+//                data: {
+//                    'action': 'full_post_ajax_request',
+//                    'post' : p,
+//                    'nonce': gucu_ajax_obj.nonce
+//                },
+//                beforeSend: function () {
+//                    $('div.content-full-post').html('');
+//                    $('div.content-full-post').addClass('gucu-loader');
+//                },
+//                success: function (data) {
+//                    $('div.content-full-post').removeClass('gucu-loader').html(data);
+////                    console.log();
+//                    $scrollTop = $("#content-full-post").offset().top;
+//                    
+//                    $('html,body').animate({
+//                        scrollTop: $scrollTop - 80 
+//                    }, 'slow');
+//                },
+//                error: function (errorThrown) {
+//                    console.log(errorThrown);
+//                }
+//            });            
+//        });
     });
     
     $(document).ready(function(){
-    $(window).scroll(function () {
-        // Scroll to the top
-        if ($(this).scrollTop() > 800) {
-            $('.scrollup').fadeIn();
-        } else {
-            $('.scrollup').fadeOut();
-        }
+        $(window).scroll(function () {
+            // Scroll to the top
+            if ($(this).scrollTop() > 600) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
 
+        });
+        // Scroll to the top
+        $('.scrollup').click(function () {
+            $("html, body").animate({scrollTop: 300}, 200);
+            return false;
+        });       
     });
-    // Scroll to the top
-    $('.scrollup').click(function () {
-        $("html, body").animate({scrollTop: 300}, 200);
-        return false;
-    });        
-    });
+
     
 })(jQuery);
 

@@ -47,9 +47,7 @@
 			 * @since 1.1.0
 			 */
 			do_action( 'genesis_loop' );
-                        // local : 218
-                        // gucu: 337
-                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu(337);
+                        $gucu_custom_cat_menu = new Gucu_Custom_Categories_Menu( BIBLE_ID );
                         echo $gucu_custom_cat_menu->get_html();                        
 
 			/**
