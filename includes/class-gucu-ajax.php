@@ -69,9 +69,9 @@ class Gucu_Ajax {
 
             foreach ($posts as $post) {
                 
-                if ( ! isset( self::$has_commentary  )){
-                    self::hasCommentary( $post->ID );
-                }
+//                if ( ! isset( self::$has_commentary  )){
+//                    self::hasCommentary( $post->ID );
+//                }
 
                 /* $post_thumbnail_url = get_the_post_thumbnail_url($post->ID, 'featured-blog'); */
 
@@ -86,16 +86,16 @@ class Gucu_Ajax {
                 $chapters .='</div>'; // .gucu-thump
             }
             $chapters .='</div>'; // .gucu-sub-child-cats
-            if ( self::$has_commentary  ){
-                $chapters .= '<hr />';
-                $chapters .='<h2>'.__(' Commentary' ,'gucu' ).'</h2>';  
-                $commentaries = self::getPosts ( self::$has_commentary );
-                foreach ($commentaries as $commentary) {
-                   $chapters .= '<a class="gucu-single-commentary" href="' . get_permalink($commentary->ID) . '">' . $commentary->post_title . '</a>';
-                   $chapters .= '<p class="commentary-excerpt">' .$commentary->post_excerpt .'<a href="'.get_permalink($commentary->ID).'" class="readmore">'.__( 'Read more...' , 'gucu') .'</a>' . '</p>';
-                }
-                
-            }
+//            if ( self::$has_commentary  ){
+//                $chapters .= '<hr />';
+//                $chapters .='<h2>'.__(' Commentary' ,'gucu' ).'</h2>';  
+//                $commentaries = self::getPosts ( self::$has_commentary );
+//                foreach ($commentaries as $commentary) {
+//                   $chapters .= '<a class="gucu-single-commentary" href="' . get_permalink($commentary->ID) . '">' . $commentary->post_title . '</a>';
+//                   $chapters .= '<p class="commentary-excerpt">' .$commentary->post_excerpt .'<a href="'.get_permalink($commentary->ID).'" class="readmore">'.__( 'Read more...' , 'gucu') .'</a>' . '</p>';
+//                }
+//                
+//            }
             
             
             return $chapters;

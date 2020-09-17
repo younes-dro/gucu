@@ -141,7 +141,42 @@
         });
     });
 
+    /* Modal Commentary */
+    $("body").on("click , mousemove", ".tooltip-icon", function (e) {
+        $('.tooltip-content').css('display', 'none');
+        $(this).next().css('display', 'block');
+    });
+    $("body").on("click", ".tooltip-close", function (e) {
+        $(this).parent().css('display', 'none');
+    });
+    $("body").on("mousemove", ".tooltip-icon", function (e) {
+        var tooltipWidth = $('.tooltip-container').outerWidth();
+        var tooltipHeight = $('.tooltip-container').outerHeight();
 
+        // width detection
+        var pageWidth = $('body').width();
+        if (e.pageX > pageWidth / 2) {
+            $('.tooltip-content').css('left', ( -250) + 'px');
+        } else {
+            $('.tooltip-content').css('left', ( 0) + 'px');
+        }
+
+        // height detection
+        if (e.pageY > 100) {
+            $('.tooltip-content').css('top', (20) + 'px');
+        } else {
+            $('.tooltip-content').css('top', ( 20) + 'px');
+        }
+    });
+    $(document).mouseup(function (e)
+    {
+        var container = $(".tooltip-content");
+
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+            container.hide();
+        }
+    });
 })(jQuery);
 
 

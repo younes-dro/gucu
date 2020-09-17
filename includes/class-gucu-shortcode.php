@@ -29,11 +29,14 @@ class Gucu_ShortCode {
         
         extract( $atts );
         $tooltip = get_post( $id ); 
-        
+        $html = '';
         $html  .= '<span class="tooltip-container">';
-        $html  .= '<span class="ionicons ion-ios-chatbubbles"></span>';
-      $html .= '<span class="tooltip-content">'.$tooltip->post_content.'</span>';
-        $html .= '</span>';
+            $html  .= '<span class="tooltip-icon ionicons ion-ios-chatbubbles "></span>';
+            $html  .= '<span class="tooltip-content">';
+            $html  .= '<span class="tooltip-close ionicons ion-ios-close"></span>';
+            $html  .= $tooltip->post_content;
+            $html  .= '</span>';
+        $html  .= '</span>';
         
         return $html;
     }

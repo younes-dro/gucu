@@ -6,7 +6,7 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     padding-right: 15px;
     padding-left: 15px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
     /*background-color: #f00;*/ 
     box-shadow: none;
     border-top: none;
@@ -55,6 +55,7 @@ div.posts-numbers{
     margin-top: 10px;
     display: none;
     padding: 1px;
+    min-height: 200px;
 }
 div.posts-numbers.open{
     display: block;
@@ -239,6 +240,48 @@ p.commentary-excerpt a.gucu-single-commentary{
 p.content-chapters .ion-ios-more:before{
     margin-right: 10px;
 }*/
+
+/********************* tooltip */
+.tooltip-container{
+    position: relative;
+}
+.tooltip-icon{
+cursor: pointer;
+    font-size: 10px;
+    transform: scale(2);
+     color:#554948; ; 
+    margin: 10px;
+}
+.tooltip-icon:hover,
+.tooltip-close:hover{
+    color:#ce3a0d; 
+}
+.tooltip-close{
+    /* border: 1px solid; */
+    font-size: 22px;
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;    
+}
+.tooltip-content{
+    display: none;
+    background-color: #211b1a;
+    font-size: 12px;
+    padding: 20px 10px 10px 10px;
+    max-height: 300px;
+    overflow: auto;
+    position: absolute;
+    top: 21px;
+    z-index: 2147483647;
+    width: 250px;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    text-align: left;
+    height: 250px;
+}
 
 @media screen and ( min-width:802px){
 

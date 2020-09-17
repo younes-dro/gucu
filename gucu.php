@@ -8,7 +8,7 @@
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         4.2.0
+ * Version:         4.3.0
  *
  * @package         Gucu
  */
@@ -267,6 +267,7 @@ class Gucu_Custom_Queries{
         add_filter('page_template', array($this ,  'catch_bible_template' ) );
         add_filter('page_template', array($this ,  'catch_commentary_template' ) );
         add_action( 'wp_enqueue_scripts', array( $this , 'gucu_enqueue') );
+        add_action( 'init' , array ( $this , 'gucu_shortcode' ) );
         
         add_action( 'wp_ajax_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );
         add_action( 'wp_ajax_nopriv_gucu_ajax_request', array ( $this , 'gucu_ajax_request' ) );
@@ -278,7 +279,9 @@ class Gucu_Custom_Queries{
         if ( is_admin() ){
             
             add_action ( 'init' , array ( $this , 'add_custom_meta_box' ) );
+            add_action ( 'init' , array ( $this , 'add_tooltip_cpt' ) );
         }
+       
         
     }
     public function load_custom_template( $templates ){
@@ -319,8 +322,8 @@ class Gucu_Custom_Queries{
             wp_enqueue_style( 'gucu-selec2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css', array( ), Gucu_Custom_Queries()->version );
             
             wp_enqueue_style('gucu-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
-            wp_enqueue_style('gucu-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css');        
-            
+            wp_enqueue_style('gucu-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css'); 
+                       
             wp_localize_script(
 		'gucu-custom-js',
 		'gucu_ajax_obj',
@@ -347,6 +350,12 @@ class Gucu_Custom_Queries{
     }
     public function add_custom_meta_box (){
         Gucu_Admin::Attach_Category();
+    }
+    public function add_tooltip_cpt(){
+        Gucu_Admin::create_tooltip();
+    }
+    public function gucu_shortcode (){
+        Gucu_ShortCode::add_shortcode();
     }
 
     /*-----------------------------------------------------------------------------------*/
