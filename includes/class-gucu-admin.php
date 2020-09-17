@@ -14,14 +14,42 @@ if (!defined('ABSPATH')) {
 /**
  * Admin Custom script .
  * 
- * @class Gucu_Ajax
+ * @class Gucu_Admin
  * @author Younes DRO <younesdro@gmail.com>
  * @version 4.2.0
  * @since 4.2.0
  */
 class Gucu_Admin {
     
-    
+    public static function create_tooltip(){
+        $labels = array(
+            'name' => __( 'Tooltips', 'gucu' ),
+            'singular_name' => __( 'Tooltip', 'gucu' ),
+            'add_new' => __( 'Add New', 'gucu' ),
+            'add_new_item' => __( 'Add New Tooltip' , 'gucu' ),
+            'edit_item' => __( 'Edit Tooltip' , 'gucu' ),
+            'new_item' => __( 'New Tooltip' , 'gucu' ),
+            'all_items' => __( 'All Tooltips' , 'gucu' ),
+            'view_item' => __( 'View Tooltip' , 'gucu' ),
+            'search_items' => __('Search Tooltip' , 'gucu' ),
+            'not_found' => __('No Tooltips found' , 'gucu' ),
+            'not_found_in_trash' => __('No Tooltips found in the Trash'),
+            'parent_item_colon' => '',
+            'menu_name' => 'Gucu Tooltips'
+        );
+        $args = array(
+            'labels' => $labels,
+            'description' => __( 'Add comments for bible verses' , 'gucu' ),
+            'public' => true,
+            'menu_position' => 5,
+            'menu_icon' => dirname(plugin_dir_url(__FILE__)).'/assets/images/gucu-logo.png',
+            'supports' => array( 'title', 'editor' ),
+            'has_archive' => false
+        );
+
+        register_post_type( 'gucu_tooltip', $args );        
+    }
+
     public static function Attach_Category(){
         global $pagenow;
 
