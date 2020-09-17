@@ -6,7 +6,7 @@
 (function ($) {
 
 
-    function getSliderSettings( indexSide ) {
+    function getSliderSettings(indexSide) {
         return {
             dots: true,
             infinite: true,
@@ -41,7 +41,7 @@
             ]
         };
     }
-    
+
     $(document).ready(function () {
         $('div.gucu-thumb').on('click', function () {
 
@@ -63,8 +63,7 @@
         });
     }
     $(document).ready(function () {
-        $('select.gucu-books-bible').on("select2:open", function (e) { 
-//            console.log( this.value); 
+        $('select.gucu-books-bible').on("select2:open", function (e) {
             $('div.posts-numbers').addClass('open');
         });
         $('select.gucu-books-bible').on('change focus', function () {
@@ -73,33 +72,33 @@
                 type: 'POST',
                 url: gucu_ajax_obj.ajaxurl,
                 data: {
-                    'action' : 'grid_ajax_request',
-                    'book' : book,
+                    'action': 'grid_ajax_request',
+                    'book': book,
                     'nonce': gucu_ajax_obj.nonce
                 },
-                beforeSend: function(){
+                beforeSend: function () {
                     $('.content-chapters').html('');
                     $('div.posts-numbers').html('');
                     $('div.content-full-post').html('');
                     $('div.posts-numbers').addClass('open');
                     $('div.posts-numbers').addClass('gucu-loader');
                 },
-                success: function( data){
-                    $('div.posts-numbers').removeClass('gucu-loader').html( data);                  
+                success: function (data) {
+                    $('div.posts-numbers').removeClass('gucu-loader').html(data);
                 },
-                error: function(error){
+                error: function (error) {
                     console.log(error);
                 }
             });
         });
-        
-        $(document).on('click', 'span.close-chapter', function(){
-           $('div.posts-numbers').removeClass('open'); 
+
+        $(document).on('click', 'span.close-chapter', function () {
+            $('div.posts-numbers').removeClass('open');
         });
-        $(document).on('click', 'a.chapter-number', function(e){
+        $(document).on('click', 'a.chapter-number', function (e) {
             e.preventDefault();
-            var book =  $(this).data('book-id');
-            var post =  $(this).data('post-id');
+            var book = $(this).data('book-id');
+            var post = $(this).data('post-id');
             var indexSide = $(this).data('slide-index');
             $('span.close-chapter').trigger('click');
             $.ajax({
@@ -108,7 +107,7 @@
                 data: {
                     'action': 'gucu_ajax_request',
                     'book': book,
-                    'post' : post,
+                    'post': post,
                     'nonce': gucu_ajax_obj.nonce
                 },
                 beforeSend: function () {
@@ -122,49 +121,11 @@
                 error: function (errorThrown) {
                     console.log(errorThrown);
                 }
-            });            
-            
+            });
         });
-        // Expand the post
-//        $(document).on('click','button.expand',function(){
-//            $('div.gucu-thumb').toggleClass('expanded');
-////            $(this).fadeOut('slow');
-//        }); 
-        
-//        $(document).on('click', 'a.read-full-post', function(e){
-//            e.preventDefault();
-//            var p = $(this).data('post-id');
-//            $('div.content-full-post').html('Loading....');
-//            
-//                $.ajax({
-//                type: 'POST',
-//                url: gucu_ajax_obj.ajaxurl,
-//                data: {
-//                    'action': 'full_post_ajax_request',
-//                    'post' : p,
-//                    'nonce': gucu_ajax_obj.nonce
-//                },
-//                beforeSend: function () {
-//                    $('div.content-full-post').html('');
-//                    $('div.content-full-post').addClass('gucu-loader');
-//                },
-//                success: function (data) {
-//                    $('div.content-full-post').removeClass('gucu-loader').html(data);
-////                    console.log();
-//                    $scrollTop = $("#content-full-post").offset().top;
-//                    
-//                    $('html,body').animate({
-//                        scrollTop: $scrollTop - 80 
-//                    }, 'slow');
-//                },
-//                error: function (errorThrown) {
-//                    console.log(errorThrown);
-//                }
-//            });            
-//        });
     });
-    
-    $(document).ready(function(){
+
+    $(document).ready(function () {
         $(window).scroll(function () {
             // Scroll to the top
             if ($(this).scrollTop() > 600) {
@@ -172,16 +133,15 @@
             } else {
                 $('.scrollup').fadeOut();
             }
-
         });
         // Scroll to the top
         $('.scrollup').click(function () {
             $("html, body").animate({scrollTop: 300}, 200);
             return false;
-        });       
+        });
     });
 
-    
+
 })(jQuery);
 
 
