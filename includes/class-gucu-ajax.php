@@ -29,8 +29,8 @@ class Gucu_Ajax {
      */
     public static function sendRequest( $request = '' ) {
 
-        $book = $_POST['book'];
-        $post  = $_POST['post'];
+        $book       = esc_attr ( $_POST['book'] );
+        $post       = esc_attr( $_POST['post'] );
         if ( $request == 'grid'){
             echo self::buildGridPosts(  $book   );
         }else if( $request == 'fullpost'){
@@ -81,7 +81,7 @@ class Gucu_Ajax {
                 /* $chapters .= '<p class="large-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>'; */
                 /* $chapters .= '<p class="small-excerpt">' . wp_trim_words($post->post_content, 50, '<a data-post-id="'.$post->ID.'" class="read-full-post" href="'.get_permalink($post->ID).'">... <span class="readmore">Read more</span></a>') . '</p>'; */
                 $chapters .= '<p class="small-excerpt">'; 
-                $chapters .= $post->post_content; 
+                $chapters .= apply_filters('the_content', $post->post_content ); 
                 $chapters .= '</p>';
                 $chapters .='</div>'; // .gucu-thump
             }
@@ -96,7 +96,7 @@ class Gucu_Ajax {
                 }
                 
             }
-
+            
             
             return $chapters;
         
