@@ -8,7 +8,7 @@
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         4.3.0
+ * Version:         4.4.0
  *
  * @package         Gucu
  */
@@ -313,10 +313,14 @@ class Gucu_Custom_Queries{
     
     public function gucu_enqueue(){
         if( is_page_template( 'bible.php' ) || is_page_template( 'commentary.php' ) ){
-            
+                        
+            wp_enqueue_script( 'jquery-ui-accordion' );
             wp_enqueue_script( 'gucu-select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js', array( 'jquery' ), Gucu_Custom_Queries()->version, true );
             wp_enqueue_script('gucu-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Gucu_Custom_Queries()->version, true);            
             wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/assets/gucu-js.js' , array('jquery'), Gucu_Custom_Queries()->version, true);
+            
+            wp_register_style('wptuts-jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
+            wp_enqueue_style('wptuts-jquery-ui-style');            
             
             wp_enqueue_style( 'gucu-custom-css', $this->plugin_url() . '/assets/gucu-css.css' );
             wp_enqueue_style( 'gucu-selec2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css', array( ), Gucu_Custom_Queries()->version );

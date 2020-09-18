@@ -12,6 +12,7 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     border-top: none;
     position: relative;
     border: none;
+    padding-bottom: 20px;
 }
 body.page-template-bible  .content > .entry::after ,
 body.page-template-commentary  .content > .entry::after{
@@ -241,46 +242,32 @@ p.content-chapters .ion-ios-more:before{
     margin-right: 10px;
 }*/
 
-/********************* tooltip */
-.tooltip-container{
-    position: relative;
+/********************* Acordion */
+.commentary-accordion{
+    font-family: Montserrat, sans-serif;
 }
-.tooltip-icon{
-cursor: pointer;
-    font-size: 10px;
-    transform: scale(2);
-     color:#554948; ; 
-    margin: 10px;
+.commentary-accordion .ui-accordion .ui-accordion-header{
+    background-color: #f1f1f1;
+    padding: .5em .5em .5em 0;
 }
-.tooltip-icon:hover,
-.tooltip-close:hover{
-    color:#ce3a0d; 
+
+.commentary-accordion .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button{
+  font-size: 13px;  
+  border: none;
 }
-.tooltip-close{
-    /* border: 1px solid; */
-    font-size: 22px;
-    position: absolute;
-    top: 4px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    text-align: center;    
-}
-.tooltip-content{
-    display: none;
-    background-color: #211b1a;
-    font-size: 12px;
-    padding: 20px 10px 10px 10px;
-    max-height: 300px;
+
+.ui-accordion .ui-accordion-content {
+    padding: 1em 1.2em;
+    border-top: 0;
     overflow: auto;
-    position: absolute;
-    top: 21px;
-    z-index: 2147483647;
-    width: 250px;
-    color: rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
     text-align: left;
-    height: 250px;
+    /* padding: 1em 0 1em 1em; */
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Montserrat, sans-serif;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+    background-color: #535353;
 }
 
 @media screen and ( min-width:802px){
