@@ -264,8 +264,8 @@ class Gucu_Custom_Queries{
         }
         
         add_filter( 'theme_page_templates' , array( $this , 'load_custom_template') );
-        add_filter('page_template', array($this ,  'catch_bible_template' ) );
-        add_filter('page_template', array($this ,  'catch_commentary_template' ) );
+        add_filter( 'template_include' , array($this ,  'catch_bible_template' ) );
+        add_filter( 'template_include' , array($this ,  'catch_commentary_template' ) );
         add_action( 'wp_enqueue_scripts', array( $this , 'gucu_enqueue') );
         add_action( 'init' , array ( $this , 'gucu_shortcode' ) );
         
