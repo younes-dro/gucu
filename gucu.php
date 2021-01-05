@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Plugin Name:     Gucu
+ * Plugin Name:     Bible reader
  * Plugin URI:      https://gucu.club/
- * Description:     Custom Queries for gucu.com
+ * Description:     Simple reading of the bible.
  * Author:          Younes DRO
  * Author URI:      https://github.com/younes-dro
  * Text Domain:     gucu
  * Domain Path:     /languages
- * Version:         4.4.0
+ * Version:         1.0.0
  *
  * @package         Gucu
  */
@@ -54,7 +54,7 @@ class Gucu_Custom_Queries{
     *
     * @var String 
     */
-    public $plugin_name = 'Custom Queries for gucu.com';
+    public $plugin_name = 'Simple reading of the bible';
     
     /** 
      * Instance of the Gucu_Custom_Queries_Dependencies class.
