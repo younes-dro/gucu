@@ -86,8 +86,8 @@ div.posts-numbers .grid .grid-content a{
     border-bottom: 1px solid #ccc;
     /* border: 1px solid #ccc; */
     padding: 1rem;
-    font-size: .875rem;
-    color: rgba(0,0,0,0.5);
+/*    font-size: .875rem;*/
+    /*color: rgba(0,0,0,0.5);*/
     text-align: center;
     display: inline-block;
     width: 50%;
@@ -145,12 +145,14 @@ div.gucu-sub-child-cats .slick-next:before{
     color: #333;
 }
 
-div.gucu-sub-child-cats div.gucu-thumb{
-    
+div.gucu-sub-child-cats div.gucu-thumb{    
     margin: 4px 4px;
     padding: 10px 36px 0px 28px;
     text-align: center;
     transition: max-height 0.7s linear;
+}
+div.gucu-sub-child-cats div.gucu-thumb h2{
+    text-align: left;
 }
 /*div.gucu-sub-child-cats div.gucu-thumb.expanded{
     max-height: 1500px;
@@ -173,7 +175,6 @@ div.gucu-sub-child-cats div.gucu-thumb p{
     /* display: none; */
     text-align: left;
     color: #554948;
-    font-family: Montserrat, sans-serif;
     text-align: left;
     padding-right: 5px;
     padding-left: 5px;
@@ -252,7 +253,7 @@ p.content-chapters .ion-ios-more:before{
 }
 
 .commentary-accordion .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button{
-  font-size: 13px;  
+  /*font-size: 13px;*/  
   border: none;
 }
 
@@ -262,9 +263,9 @@ p.content-chapters .ion-ios-more:before{
     overflow: auto;
     text-align: left;
     /* padding: 1em 0 1em 1em; */
-    font-size: 14px;
+    /*font-size: 14px;*/
     font-weight: normal;
-    font-family: Montserrat, sans-serif;
+    /*font-family: Montserrat, sans-serif;*/
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
     background-color: #535353;
@@ -326,7 +327,7 @@ div.gucu-sub-child-cats div.gucu-thumb{
         padding-left: 10px;
         padding-right: 10px;
         padding-bottom: 15px;
-        font-size: 1rem;        
+        /*font-size: 1rem;*/        
     }
     div.gucu-sub-child-cats .slick-prev{
         left: -60px;

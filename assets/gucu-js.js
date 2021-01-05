@@ -6,50 +6,6 @@
 (function ($) {
 
 
-    function getSliderSettings(indexSide) {
-        return {
-            dots: true,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 1,
-            initialSlide: indexSide,
-            slidesToScroll: 1,
-            adaptiveHeight: true,
-            responsive: [
-                {
-                    breakpoint: 1022,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true
-                    }
-                },
-                {
-                    breakpoint: 802,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        };
-    }
-
-    $(document).ready(function () {
-        $('div.gucu-thumb').on('click', function () {
-
-            var postUrl = $(this).find('a').prop('href');
-            window.location.href = postUrl;
-
-        });
-    });
     var isMobile = false; //initiate as false
     // device detection
     if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -116,7 +72,7 @@
                 },
                 success: function (data) {
                     $('.content-chapters').removeClass('gucu-loader').html(data);
-                    $('.gucu-sub-child-cats').slick(getSliderSettings(indexSide));
+                    
                     $(".commentary-accordion").accordion({ header: "h3", collapsible: true, active: false , heightStyle: "content"});
                 },
                 error: function (errorThrown) {

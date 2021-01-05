@@ -20,8 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  */
 if ( substr ( get_bloginfo('url'), 7 ,  3 ) !== '127' ){
-    define( 'BIBLE_ID' , 337 );
-    define( 'COMMENTARY_ID' , 536 );
+    define( 'BIBLE_ID' , 2 );
+    define( 'COMMENTARY_ID' , 299 );
 }else{
     define( 'BIBLE_ID' , 218 );
     define( 'COMMENTARY_ID' , 225);    
@@ -245,7 +245,7 @@ class Gucu_Custom_Queries{
         
         if( ! is_admin()  ){  
             add_action('pre_get_posts' , function( $query ){
-                if ( $query->is_main_query()  && ( is_category('213') || is_category('216') ) ) {
+                if ( $query->is_main_query()  && ( is_category('3') || is_category('8') ) ) {
 
                     $today = getdate();
 
@@ -316,7 +316,7 @@ class Gucu_Custom_Queries{
                         
             wp_enqueue_script( 'jquery-ui-accordion' );
             wp_enqueue_script( 'gucu-select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js', array( 'jquery' ), Gucu_Custom_Queries()->version, true );
-            wp_enqueue_script('gucu-slick-js', $this->plugin_url() . '/assets/slick/slick.js', array('jquery',), Gucu_Custom_Queries()->version, true);            
+            
             wp_enqueue_script( 'gucu-custom-js', $this->plugin_url(). '/assets/gucu-js.js' , array('jquery'), Gucu_Custom_Queries()->version, true);
             
             wp_register_style('wptuts-jquery-ui-style', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
@@ -325,8 +325,7 @@ class Gucu_Custom_Queries{
             wp_enqueue_style( 'gucu-custom-css', $this->plugin_url() . '/assets/gucu-css.css' );
             wp_enqueue_style( 'gucu-selec2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css', array( ), Gucu_Custom_Queries()->version );
             
-            wp_enqueue_style('gucu-slick-css', $this->plugin_url() . '/assets/slick/slick.css');
-            wp_enqueue_style('gucu-slick-theme-css', $this->plugin_url() . '/assets/slick/slick-theme.css'); 
+
                        
             wp_localize_script(
 		'gucu-custom-js',
