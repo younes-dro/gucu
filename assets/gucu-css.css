@@ -5,14 +5,14 @@ body.page-template-commentary article.page.gucu-custom-bibe{
     margin-top: 0px;
     padding-right: 15px;
     padding-left: 15px;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     /*padding-bottom: 10px;*/
     /*background-color: #f00;*/ 
     box-shadow: none;
     border-top: none;
     position: relative;
     border: none;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 body.page-template-bible  .content > .entry::after ,
 body.page-template-commentary  .content > .entry::after{
@@ -79,12 +79,12 @@ div.posts-numbers .grid h4 span{
     cursor: pointer;
 }
 div.posts-numbers .grid .grid-content{
-    padding: 0;
+    padding: 10px 5px;
 }
 div.posts-numbers .grid .grid-content a{
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    /* border: 1px solid #ccc; */
+    /*border-right: 1px solid #ccc;*/
+    /*border-bottom: 1px solid #ccc;*/
+     border: 1px solid #ccc; 
     padding: 1rem;
 /*    font-size: .875rem;*/
     /*color: rgba(0,0,0,0.5);*/

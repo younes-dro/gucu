@@ -62,10 +62,11 @@ class Gucu_Ajax {
     }
 
     public static function getChapters( $book , $post ) {
-            $chapters = '';
-           //$chapters .= self::getBreadcrumbs($post);
-            $chapters .='<div class="gucu-sub-child-cats">';
             $post = self::getPost( $post );
+        $chapters = '';
+           $chapters .= self::getBreadcrumbs($post);
+            $chapters .='<div class="gucu-sub-child-cats">';
+            
                 
             $chapters .= '<header class="entry-header">';
             $chapters .= '<h1 class="entry-title" itemprop="headline">';
@@ -84,10 +85,20 @@ class Gucu_Ajax {
         
     }
     public static function getBreadcrumbs( $post ){
-        $html = '';
-        
-        $html .= genesis_breadcrumb();
-        
+        $html = '<div class="breadcrumb" itemprop="breadcrumb" itemscope="" itemtype="https://schema.org/BreadcrumbList">';
+        $html .= 'You are here: ';
+        $html .= '<span class="breadcrumb-link-wrap" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="'.get_home_url().'" itemprop="item"><span class="breadcrumb-link-text-wrap" itemprop="name">Home</span></a><meta itemprop="position" content="1"></span>';
+        $html .= '<span aria-label="breadcrumb separator"> / </span>';
+        /* Post first cat */
+        $post_cat = get_the_category( $post );
+        if( $post_cat[0]->parent != 0 ){
+            $html .= get_category_parents( $post_cat[0]->term_id, true, ' / ' );
+        }
+        /* Post first cat */
+       // $html .= '<span aria-label="breadcrumb separator"> / </span><span class="breadcrumb-link-wrap" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="#" itemprop="item"><span class="breadcrumb-link-text-wrap" itemprop="name">'.$post_cat[0]->name.'</span></a><meta itemprop="position" content="1"></span>';
+    
+        $html .=  " ".$post->post_title;
+        $html .= '</div>';
         
         return $html;
     }
